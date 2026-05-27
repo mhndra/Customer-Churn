@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "DFGen2_GoldCustomerChurn"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d6719717-5d24-9679-4c09-e5ac80894614"
+  }
+}

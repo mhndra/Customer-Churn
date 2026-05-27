@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "DFGen2_GoldFactCustomerSubscriptions"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5cf5f599-2fb8-9898-4238-52f22fa5ecf4"
+  }
+}

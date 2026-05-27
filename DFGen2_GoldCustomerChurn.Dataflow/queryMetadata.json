@@ -1,0 +1,73 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {
+    "allowModernEvaluationEngine": true
+  },
+  "name": "DFGen2_GoldCustomerChurn",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "Gold Dim State": {
+      "queryId": "cfe94d7a-b306-4f94-a68d-7f05c62dc9c4",
+      "queryName": "Gold Dim State",
+      "loadEnabled": false
+    },
+    "Gold Dim Contracts": {
+      "queryId": "ff2d7e03-9951-446e-9042-f26c63721fce",
+      "queryName": "Gold Dim Contracts",
+      "loadEnabled": false
+    },
+    "Gold Dim Churn": {
+      "queryId": "b82508bb-6c58-40cf-b976-ed8c04889148",
+      "queryName": "Gold Dim Churn",
+      "loadEnabled": false
+    },
+    "Gold Dim Customers": {
+      "queryId": "6869b478-6f54-4bb2-839a-68d98703950e",
+      "queryName": "Gold Dim Customers",
+      "loadEnabled": false
+    },
+    "Gold Fact Customer Subscriptions": {
+      "queryId": "07b4ceae-a35c-466a-800b-27a9982fd674",
+      "queryName": "Gold Fact Customer Subscriptions",
+      "loadEnabled": false
+    },
+    "Gold Dim State_DataDestination": {
+      "queryId": "ecf290a0-80ab-4fe5-9664-2956633d7e00",
+      "queryName": "Gold Dim State_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "Gold Dim Contracts_DataDestination": {
+      "queryId": "d5eb5535-b51a-42f4-a4cc-ddc253f78442",
+      "queryName": "Gold Dim Contracts_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "Gold Dim Churn_DataDestination": {
+      "queryId": "6b0a6e0b-ee51-44fc-85a2-0be00ff7ff66",
+      "queryName": "Gold Dim Churn_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "Gold Dim Customers_DataDestination": {
+      "queryId": "5a5e1168-e546-4052-8114-82bd203f0025",
+      "queryName": "Gold Dim Customers_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "Gold Fact Customer Subscriptions_DataDestination": {
+      "queryId": "ebdca0f5-ef12-424c-b57c-0de971054572",
+      "queryName": "Gold Fact Customer Subscriptions_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"e69ed8e0-fbf5-405c-86a9-4e2ad134b674\",\"DatasourceId\":\"6f28c340-b111-41d0-9ad6-02af5b920e27\"}"
+    }
+  ]
+}

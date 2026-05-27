@@ -1,0 +1,1468 @@
+{
+  "name": "{{Dataset_Name}}",
+  "compatibilityLevel": 1604,
+  "model": {
+    "name": "{{Dataset_Name}}",
+    "culture": "en-US",
+    "collation": "Latin1_General_100_BIN2_UTF8",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "customer_churn",
+        "sourceLineageTag": "[bronze].[customer_churn]",
+        "columns": [
+          {
+            "name": "CustomerID",
+            "dataType": "string",
+            "sourceColumn": "CustomerID",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CustomerID",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ChurnLabel",
+            "dataType": "string",
+            "sourceColumn": "ChurnLabel",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ChurnLabel",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "AccountLengthMonths",
+            "dataType": "string",
+            "sourceColumn": "AccountLengthMonths",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "AccountLengthMonths",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "LocalCalls",
+            "dataType": "string",
+            "sourceColumn": "LocalCalls",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "LocalCalls",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "LocalMins",
+            "dataType": "string",
+            "sourceColumn": "LocalMins",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "LocalMins",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IntlCalls",
+            "dataType": "string",
+            "sourceColumn": "IntlCalls",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "IntlCalls",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IntlMins",
+            "dataType": "string",
+            "sourceColumn": "IntlMins",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "IntlMins",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IntlActive",
+            "dataType": "string",
+            "sourceColumn": "IntlActive",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "IntlActive",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IntlPlan",
+            "dataType": "string",
+            "sourceColumn": "IntlPlan",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "IntlPlan",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ExtraInternationalCharges",
+            "dataType": "string",
+            "sourceColumn": "ExtraInternationalCharges",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ExtraInternationalCharges",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "CustomerServiceCalls",
+            "dataType": "string",
+            "sourceColumn": "CustomerServiceCalls",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "CustomerServiceCalls",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "AvgMonthlyGBDownload",
+            "dataType": "string",
+            "sourceColumn": "AvgMonthlyGBDownload",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "AvgMonthlyGBDownload",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "UnlimitedDataPlan",
+            "dataType": "string",
+            "sourceColumn": "UnlimitedDataPlan",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "UnlimitedDataPlan",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ExtraDataCharges",
+            "dataType": "string",
+            "sourceColumn": "ExtraDataCharges",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ExtraDataCharges",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "State",
+            "dataType": "string",
+            "sourceColumn": "State",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "State",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PhoneNumber",
+            "dataType": "string",
+            "sourceColumn": "PhoneNumber",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "PhoneNumber",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Gender",
+            "dataType": "string",
+            "sourceColumn": "Gender",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Gender",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Age",
+            "dataType": "string",
+            "sourceColumn": "Age",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Age",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Under30",
+            "dataType": "string",
+            "sourceColumn": "Under30",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Under30",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Senior",
+            "dataType": "string",
+            "sourceColumn": "Senior",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Senior",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "IsGroup",
+            "dataType": "string",
+            "sourceColumn": "IsGroup",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "IsGroup",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "NumberofCustomersinGroup",
+            "dataType": "string",
+            "sourceColumn": "NumberofCustomersinGroup",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "NumberofCustomersinGroup",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "DeviceProtectionandOnlineBackup",
+            "dataType": "string",
+            "sourceColumn": "DeviceProtectionandOnlineBackup",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "DeviceProtectionandOnlineBackup",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ContractType",
+            "dataType": "string",
+            "sourceColumn": "ContractType",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ContractType",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "PaymentMethod",
+            "dataType": "string",
+            "sourceColumn": "PaymentMethod",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "PaymentMethod",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "MonthlyCharge",
+            "dataType": "string",
+            "sourceColumn": "MonthlyCharge",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "MonthlyCharge",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "TotalCharges",
+            "dataType": "string",
+            "sourceColumn": "TotalCharges",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "TotalCharges",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ChurnCategory",
+            "dataType": "string",
+            "sourceColumn": "ChurnCategory",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ChurnCategory",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "ChurnReason",
+            "dataType": "string",
+            "sourceColumn": "ChurnReason",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "ChurnReason",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "LoadedAt",
+            "dataType": "string",
+            "sourceColumn": "LoadedAt",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "LoadedAt",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "customer_churn",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "bronze"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "Dim_Customers",
+        "sourceLineageTag": "[dbo].[Dim_Customers]",
+        "columns": [
+          {
+            "name": "Customer Key",
+            "dataType": "int64",
+            "sourceColumn": "Customer Key",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Customer Key",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Customer ID",
+            "dataType": "string",
+            "sourceColumn": "Customer ID",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Customer ID",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Phone Number",
+            "dataType": "string",
+            "sourceColumn": "Phone Number",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Phone Number",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Gender",
+            "dataType": "string",
+            "sourceColumn": "Gender",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Gender",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Demographics",
+            "dataType": "string",
+            "sourceColumn": "Demographics",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Demographics",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Age",
+            "dataType": "int64",
+            "sourceColumn": "Age",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Age",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Age Bin",
+            "dataType": "int64",
+            "sourceColumn": "Age Bin",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Age Bin",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Is Contract Group",
+            "dataType": "string",
+            "sourceColumn": "Is Contract Group",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Is Contract Group",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Number of Customers in Group",
+            "dataType": "int64",
+            "sourceColumn": "Number of Customers in Group",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Number of Customers in Group",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Is International Calls Active",
+            "dataType": "string",
+            "sourceColumn": "Is International Calls Active",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Is International Calls Active",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Is International Plan",
+            "dataType": "string",
+            "sourceColumn": "Is International Plan",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Is International Plan",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Is Unlimited Data Plan",
+            "dataType": "string",
+            "sourceColumn": "Is Unlimited Data Plan",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Is Unlimited Data Plan",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Is Device Protection And Online Backup",
+            "dataType": "string",
+            "sourceColumn": "Is Device Protection And Online Backup",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Is Device Protection And Online Backup",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Is Churn",
+            "dataType": "string",
+            "sourceColumn": "Is Churn",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Is Churn",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Churn Flag",
+            "dataType": "int64",
+            "sourceColumn": "Churn Flag",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Churn Flag",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "Dim_Customers",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbo"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "Dim_Churn(1)",
+        "sourceLineageTag": "[gold].[Dim_Churn]",
+        "columns": [
+          {
+            "name": "Churn Key",
+            "dataType": "int64",
+            "sourceColumn": "Churn Key",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Churn Key",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Churn Reason",
+            "dataType": "string",
+            "sourceColumn": "Churn Reason",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Churn Reason",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Churn Category",
+            "dataType": "string",
+            "sourceColumn": "Churn Category",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Churn Category",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "Dim_Churn",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "gold"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "Dim_Contracts",
+        "sourceLineageTag": "[gold].[Dim_Contracts]",
+        "columns": [
+          {
+            "name": "Contract Key",
+            "dataType": "int64",
+            "sourceColumn": "Contract Key",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Contract Key",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Contract Type",
+            "dataType": "string",
+            "sourceColumn": "Contract Type",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Contract Type",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Contract Category",
+            "dataType": "string",
+            "sourceColumn": "Contract Category",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Contract Category",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Payment Method",
+            "dataType": "string",
+            "sourceColumn": "Payment Method",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Payment Method",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "Dim_Contracts",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "gold"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "Dim_Customers(1)",
+        "sourceLineageTag": "[gold].[Dim_Customers]",
+        "columns": [
+          {
+            "name": "Customer Key",
+            "dataType": "int64",
+            "sourceColumn": "Customer Key",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Customer Key",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Customer ID",
+            "dataType": "string",
+            "sourceColumn": "Customer ID",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Customer ID",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Phone Number",
+            "dataType": "string",
+            "sourceColumn": "Phone Number",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Phone Number",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Gender",
+            "dataType": "string",
+            "sourceColumn": "Gender",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Gender",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Demographics",
+            "dataType": "string",
+            "sourceColumn": "Demographics",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Demographics",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Age",
+            "dataType": "int64",
+            "sourceColumn": "Age",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Age",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Age Bin",
+            "dataType": "int64",
+            "sourceColumn": "Age Bin",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Age Bin",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Is Contract Group",
+            "dataType": "string",
+            "sourceColumn": "Is Contract Group",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Is Contract Group",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Number of Customers in Group",
+            "dataType": "int64",
+            "sourceColumn": "Number of Customers in Group",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Number of Customers in Group",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Is International Calls Active",
+            "dataType": "string",
+            "sourceColumn": "Is International Calls Active",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Is International Calls Active",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Is International Plan",
+            "dataType": "string",
+            "sourceColumn": "Is International Plan",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Is International Plan",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Is Unlimited Data Plan",
+            "dataType": "string",
+            "sourceColumn": "Is Unlimited Data Plan",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Is Unlimited Data Plan",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Is Device Protection And Online Backup",
+            "dataType": "string",
+            "sourceColumn": "Is Device Protection And Online Backup",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Is Device Protection And Online Backup",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Is Churn",
+            "dataType": "string",
+            "sourceColumn": "Is Churn",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Is Churn",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Churn Flag",
+            "dataType": "int64",
+            "sourceColumn": "Churn Flag",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Churn Flag",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "Dim_Customers",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "gold"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "Dim_State",
+        "sourceLineageTag": "[gold].[Dim_State]",
+        "columns": [
+          {
+            "name": "State Key",
+            "dataType": "int64",
+            "sourceColumn": "State Key",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "State Key",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "State Code",
+            "dataType": "string",
+            "sourceColumn": "State Code",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "State Code",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "Dim_State",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "gold"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
+        "name": "Fact_Customer Subscriptions",
+        "sourceLineageTag": "[gold].[Fact_Customer Subscriptions]",
+        "columns": [
+          {
+            "name": "Subscription Key",
+            "dataType": "int64",
+            "sourceColumn": "Subscription Key",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Subscription Key",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Customer Key",
+            "dataType": "int64",
+            "sourceColumn": "Customer Key",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Customer Key",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "State Key",
+            "dataType": "int64",
+            "sourceColumn": "State Key",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "State Key",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Contract Key",
+            "dataType": "int64",
+            "sourceColumn": "Contract Key",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Contract Key",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Churn Key",
+            "dataType": "int64",
+            "sourceColumn": "Churn Key",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Churn Key",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Grouped Consumption",
+            "dataType": "string",
+            "sourceColumn": "Grouped Consumption",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "Grouped Consumption",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Avg Monthly GB Download",
+            "dataType": "int64",
+            "sourceColumn": "Avg Monthly GB Download",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Avg Monthly GB Download",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Local Calls",
+            "dataType": "int64",
+            "sourceColumn": "Local Calls",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Local Calls",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Local Mins",
+            "dataType": "double",
+            "sourceColumn": "Local Mins",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "Local Mins",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "International Calls",
+            "dataType": "int64",
+            "sourceColumn": "International Calls",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "International Calls",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "International Mins",
+            "dataType": "double",
+            "sourceColumn": "International Mins",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "International Mins",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "Customer Service Calls",
+            "dataType": "int64",
+            "sourceColumn": "Customer Service Calls",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Customer Service Calls",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Account Length Months",
+            "dataType": "int64",
+            "sourceColumn": "Account Length Months",
+            "formatString": "0",
+            "sourceProviderType": "bigint",
+            "sourceLineageTag": "Account Length Months",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "Monthly Charge",
+            "dataType": "double",
+            "sourceColumn": "Monthly Charge",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "Monthly Charge",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "Extra International Charges",
+            "dataType": "double",
+            "sourceColumn": "Extra International Charges",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "Extra International Charges",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "Extra Data Charges",
+            "dataType": "double",
+            "sourceColumn": "Extra Data Charges",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "Extra Data Charges",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "Total Charges",
+            "dataType": "double",
+            "sourceColumn": "Total Charges",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "Total Charges",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "Loaded At",
+            "dataType": "dateTime",
+            "sourceColumn": "Loaded At",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "Loaded At",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "Fact_Customer Subscriptions",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "gold"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      }
+    ],
+    "expressions": [
+      {
+        "name": "DatabaseQuery",
+        "kind": "m",
+        "expression": "let\n    database = {{TDS_Endpoint}}\nin\n    database\n"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "SourceLineageTagType",
+        "value": "DatabaseFullyQualifiedName"
+      }
+    ]
+  }
+}

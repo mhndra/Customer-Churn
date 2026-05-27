@@ -1,0 +1,33 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {
+    "allowModernEvaluationEngine": true
+  },
+  "name": "DFGen2_GoldDimChrun",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "Gold_Dim_Churn": {
+      "queryId": "8d261636-9a67-4c4a-a3af-31e8e915d603",
+      "queryName": "Gold_Dim_Churn"
+    },
+    "Gold_Dim_Churn_DataDestination": {
+      "queryId": "bc30c139-497f-4001-b949-fa7ac6ed1be6",
+      "queryName": "Gold_Dim_Churn_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"e69ed8e0-fbf5-405c-86a9-4e2ad134b674\",\"DatasourceId\":\"6f28c340-b111-41d0-9ad6-02af5b920e27\"}"
+    },
+    {
+      "path": "Warehouse",
+      "kind": "Warehouse",
+      "connectionId": "{\"ClusterId\":\"e69ed8e0-fbf5-405c-86a9-4e2ad134b674\",\"DatasourceId\":\"f74fba35-de61-4f3b-9dc6-9d082cf41692\"}"
+    }
+  ]
+}

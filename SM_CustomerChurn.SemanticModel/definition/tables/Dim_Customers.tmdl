@@ -1,0 +1,151 @@
+table Dim_Customers
+	lineageTag: 16e0eef5-5220-4e8a-b3b3-574af9746b5c
+	sourceLineageTag: [gold].[Dim_Customers]
+
+	column 'Customer Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: df9b74ad-d8b0-45f0-b125-72f3a8c026aa
+		sourceLineageTag: Customer Key
+		summarizeBy: none
+		sourceColumn: Customer Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer ID'
+		dataType: string
+		lineageTag: d280609e-83e1-4295-9cf5-f126ed452414
+		sourceLineageTag: Customer ID
+		summarizeBy: none
+		sourceColumn: Customer ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Phone Number'
+		dataType: string
+		lineageTag: b92373ea-0374-4b65-a1ef-7d1b3d41adf7
+		sourceLineageTag: Phone Number
+		summarizeBy: none
+		sourceColumn: Phone Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gender
+		dataType: string
+		lineageTag: 02e96fac-e878-448a-b537-818ffa8935d3
+		sourceLineageTag: Gender
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column Demographics
+		dataType: string
+		lineageTag: 8bb337b0-81a1-4d1a-b333-955b6aeaa254
+		sourceLineageTag: Demographics
+		summarizeBy: none
+		sourceColumn: Demographics
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age
+		dataType: int64
+		formatString: 0
+		lineageTag: 2958602e-f1cf-4243-a99b-68e0e8768022
+		sourceLineageTag: Age
+		summarizeBy: none
+		sourceColumn: Age
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Age Bin'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1366335a-f19e-4236-b65c-110b562273e0
+		sourceLineageTag: Age Bin
+		summarizeBy: none
+		sourceColumn: Age Bin
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Contract Group'
+		dataType: string
+		lineageTag: 2f3c0083-9029-47f5-853b-4c584d28633e
+		sourceLineageTag: Is Contract Group
+		summarizeBy: none
+		sourceColumn: Is Contract Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number of Customers in Group'
+		dataType: int64
+		formatString: 0
+		lineageTag: dc65a7de-1980-4b2d-8ee2-59e43a2c1b1c
+		sourceLineageTag: Number of Customers in Group
+		summarizeBy: none
+		sourceColumn: Number of Customers in Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is International Calls Active'
+		dataType: string
+		lineageTag: e7a70f11-72a7-4b4f-8460-2f87b7f34837
+		sourceLineageTag: Is International Calls Active
+		summarizeBy: none
+		sourceColumn: Is International Calls Active
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is International Plan'
+		dataType: string
+		lineageTag: 96df78cb-7a7a-4850-aa01-82a5466a9f8e
+		sourceLineageTag: Is International Plan
+		summarizeBy: none
+		sourceColumn: Is International Plan
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Unlimited Data Plan'
+		dataType: string
+		lineageTag: 1a7fbea3-6d53-45db-8fd0-7b73aa27c116
+		sourceLineageTag: Is Unlimited Data Plan
+		summarizeBy: none
+		sourceColumn: Is Unlimited Data Plan
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Device Protection And Online Backup'
+		dataType: string
+		lineageTag: cc377ad7-c417-496a-ab74-6bc938bc1571
+		sourceLineageTag: Is Device Protection And Online Backup
+		summarizeBy: none
+		sourceColumn: Is Device Protection And Online Backup
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Churn'
+		dataType: string
+		lineageTag: 5cc670cf-7f8d-46bd-a38b-7b86d6147f75
+		sourceLineageTag: Is Churn
+		summarizeBy: none
+		sourceColumn: Is Churn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Churn Flag'
+		dataType: int64
+		formatString: 0
+		lineageTag: 661e5d2d-b8a1-45f3-a8b4-825d61f4743b
+		sourceLineageTag: Churn Flag
+		summarizeBy: none
+		sourceColumn: Churn Flag
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Customers = entity
+		mode: directLake
+		source
+			entityName: Dim_Customers
+			schemaName: gold
+			expressionSource: 'DirectLake - LH_CustomerChurn'
+

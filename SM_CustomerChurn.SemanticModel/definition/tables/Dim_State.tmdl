@@ -1,0 +1,32 @@
+table Dim_State
+	lineageTag: 18f79b53-1cc0-44ac-ab60-0ee5910b53ac
+	sourceLineageTag: [gold].[Dim_State]
+
+	column 'State Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: b15a59f7-6a5b-4454-ae0d-c7737713c540
+		sourceLineageTag: State Key
+		summarizeBy: none
+		sourceColumn: State Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'State Code'
+		dataType: string
+		lineageTag: 006daa10-3e5b-4b16-bba7-d455a8165dce
+		sourceLineageTag: State Code
+		summarizeBy: none
+		sourceColumn: State Code
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_State = entity
+		mode: directLake
+		source
+			entityName: Dim_State
+			schemaName: gold
+			expressionSource: 'DirectLake - LH_CustomerChurn'
+
+	changedProperty = Name
+

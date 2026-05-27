@@ -1,0 +1,35 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {
+    "allowModernEvaluationEngine": true
+  },
+  "name": "DFGen2_CustomerChurn",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "DefaultDestination": {
+      "queryId": "e3f92c45-cd42-4f4d-9e71-5196160fd120",
+      "queryName": "DefaultDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "Silver Customer Churn": {
+      "queryId": "b2883467-31b5-4b97-beb7-aefbbc77a9e7",
+      "queryName": "Silver Customer Churn",
+      "loadEnabled": false
+    },
+    "Silver_Customer Churn_DataDestination": {
+      "queryId": "7c8ba2af-6a06-48c1-8246-8fcaf6a78bc0",
+      "queryName": "Silver_Customer Churn_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"e69ed8e0-fbf5-405c-86a9-4e2ad134b674\",\"DatasourceId\":\"6f28c340-b111-41d0-9ad6-02af5b920e27\"}"
+    }
+  ]
+}

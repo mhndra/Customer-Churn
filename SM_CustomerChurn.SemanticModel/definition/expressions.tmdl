@@ -1,0 +1,11 @@
+expression 'DirectLake - LH_CustomerChurn' =
+		let
+		    Source = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/9d91a240-6d39-4462-928b-e18c37e3049c/28e8d742-e815-4575-842c-2d1645ba854c", [HierarchicalNavigation=true])
+		in
+		    Source
+	lineageTag: bce8f068-6951-453a-ae35-5d2c6ba6058c
+
+	annotation PBI_IncludeFutureArtifacts = False
+
+	annotation PBI_RemovedChildren = [{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[dbo].[Bronze_Customer Churn]"}},"objectType":"Table"},{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[silver].[customer_churn]"}},"objectType":"Table"},{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[dbo].[Silver_Customer Churn]"}},"objectType":"Table"}]
+

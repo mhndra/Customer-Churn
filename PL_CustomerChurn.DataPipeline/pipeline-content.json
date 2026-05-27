@@ -1,0 +1,534 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "DelimitedTextSource",
+            "formatSettings": {
+              "type": "DelimitedTextReadSettings"
+            },
+            "additionalColumns": [
+              {
+                "name": "Loaded At",
+                "value": {
+                  "value": "@formatDateTime(utcNow(),'yyyy-MM-ddTHH:mm:ss')",
+                  "type": "Expression"
+                }
+              }
+            ],
+            "storeSettings": {
+              "type": "AzureBlobStorageReadSettings",
+              "recursive": true,
+              "enablePartitionDiscovery": false
+            },
+            "datasetSettings": {
+              "type": "DelimitedText",
+              "typeProperties": {
+                "location": {
+                  "type": "LakehouseLocation",
+                  "fileName": "customer_churn.csv"
+                },
+                "columnDelimiter": ",",
+                "quoteChar": "\"",
+                "escapeChar": "\\",
+                "firstRowAsHeader": true
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "LH_CustomerChurn",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "45ba854c-2d16-842c-4575-e81528e8d742",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Files"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "LakehouseTableSink",
+            "tableActionOption": "OverwriteSchema",
+            "applyVOrder": false,
+            "partitionOption": "None",
+            "datasetSettings": {
+              "type": "LakehouseTable",
+              "typeProperties": {
+                "schema": "",
+                "table": "Bronze_Customer Churn"
+              },
+              "schema": [],
+              "linkedService": {
+                "name": "LH_CustomerChurn",
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "45ba854c-2d16-842c-4575-e81528e8d742",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Tables"
+                  },
+                  "annotations": []
+                }
+              },
+              "annotations": []
+            }
+          },
+          "translator": {
+            "type": "TabularTranslator",
+            "mappings": [
+              {
+                "source": {
+                  "name": "Customer ID",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Customer ID",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Churn Label",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Churn Label",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Account Length (in months)",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Account Length (in months)",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Local Calls",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Local Calls",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Local Mins",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Local Mins",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Intl Calls",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Intl Calls",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Intl Mins",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Intl Mins",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Intl Active",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Intl Active",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Intl Plan",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Intl Plan",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Extra International Charges",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Extra International Charges",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Customer Service Calls",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Customer Service Calls",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Avg Monthly GB Download",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Avg Monthly GB Download",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Unlimited Data Plan",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Unlimited Data Plan",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Extra Data Charges",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Extra Data Charges",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "State",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "State",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Phone Number",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Phone Number",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Gender",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Gender",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Age",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Age",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Under 30",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Under 30",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Senior",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Senior",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Group",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Group",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Number of Customers in Group",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Number of Customers in Group",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Device Protection & Online Backup",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Device Protection & Online Backup",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Contract Type",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Contract Type",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Payment Method",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Payment Method",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Monthly Charge",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Monthly Charge",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Total Charges",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Total Charges",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Churn Category",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Churn Category",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Churn Reason",
+                  "type": "String",
+                  "physicalType": "String"
+                },
+                "sink": {
+                  "name": "Churn Reason",
+                  "physicalType": "string"
+                }
+              },
+              {
+                "source": {
+                  "name": "Loaded At",
+                  "type": "String"
+                },
+                "sink": {
+                  "name": "Loaded At",
+                  "physicalType": "string"
+                }
+              }
+            ],
+            "typeConversion": true,
+            "typeConversionSettings": {
+              "allowDataTruncation": true,
+              "treatBooleanAsNumber": false
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Copy Data",
+        "dependsOn": []
+      },
+      {
+        "type": "RefreshDataflow",
+        "typeProperties": {
+          "dataflowId": "03c76a9d-0512-8592-4005-55ac79c886ac",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "notifyOption": "NoNotification",
+          "dataflowType": "DataflowFabric"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Dataflow - Silver",
+        "dependsOn": [
+          {
+            "activity": "Copy Data",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "PBISemanticModelRefresh",
+        "typeProperties": {
+          "method": "POST",
+          "groupId": "9d91a240-6d39-4462-928b-e18c37e3049c",
+          "datasetId": "af644a8a-30e5-4da8-8485-ed21926e4dad",
+          "commitMode": "Transactional",
+          "objects": [
+            {
+              "table": "Dim_State"
+            },
+            {
+              "table": "Dim_Customers"
+            },
+            {
+              "table": "Dim_Churn"
+            },
+            {
+              "table": "Fact_Customer Subscriptions"
+            },
+            {
+              "table": "Dim_Contracts"
+            },
+            {
+              "table": "_Measures"
+            }
+          ],
+          "waitOnCompletion": true,
+          "operationType": "SemanticModelRefresh"
+        },
+        "externalReferences": {
+          "connection": "8cdef0f0-4259-44c4-b96c-072518e70453"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Semantic Model Refresh",
+        "dependsOn": [
+          {
+            "activity": "Dataflow - Gold",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "RefreshDataflow",
+        "typeProperties": {
+          "dataflowId": "d6719717-5d24-9679-4c09-e5ac80894614",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "notifyOption": "NoNotification",
+          "dataflowType": "DataflowFabric"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Dataflow - Gold",
+        "dependsOn": [
+          {
+            "activity": "Dataflow - Silver",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

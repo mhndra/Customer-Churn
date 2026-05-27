@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataBuildToolJob",
+    "displayName": "DBT_CustomerChurn"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "1b9e6ec9-a99e-bdc2-47ee-11d9cd1e5cc5"
+  }
+}

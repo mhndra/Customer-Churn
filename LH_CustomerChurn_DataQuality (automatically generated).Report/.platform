@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "LH_CustomerChurn_DataQuality (automatically generated)",
+    "description": "Materialized Lake View Data Quality Report"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "4e80ba44-caf5-bd1a-452d-6a83c2423553"
+  }
+}
