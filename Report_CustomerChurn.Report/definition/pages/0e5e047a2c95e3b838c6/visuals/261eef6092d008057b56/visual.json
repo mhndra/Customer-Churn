@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Customers"
+                      "Entity": "dim_customers"
                     }
                   },
                   "Property": "Is International Calls Active"
                 }
               },
-              "queryRef": "Dim_Customers.Is International Calls Active",
-              "nativeQueryRef": "Is International Calls Active",
+              "queryRef": "dim_customers.Is International Calls Active",
+              "nativeQueryRef": "Is International Calls Active1",
               "active": true
             }
           ]
@@ -39,13 +39,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Customers"
+                      "Entity": "dim_customers"
                     }
                   },
                   "Property": "Is International Plan"
                 }
               },
-              "queryRef": "Dim_Customers.Is International Plan",
+              "queryRef": "dim_customers.Is International Plan",
               "nativeQueryRef": "Is International Plan"
             }
           ]

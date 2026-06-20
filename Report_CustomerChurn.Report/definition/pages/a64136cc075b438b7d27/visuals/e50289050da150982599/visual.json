@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Churn"
+                      "Entity": "dim_churn_descriptions"
                     }
                   },
                   "Property": "Churn Reason"
                 }
               },
-              "queryRef": "Dim_Churn.Churn Reason",
+              "queryRef": "dim_churn_descriptions.Churn Reason",
               "nativeQueryRef": "Churn Reason",
               "active": true
             }
@@ -127,6 +127,7 @@
           }
         },
         "type": "Advanced",
+        "howCreated": "User",
         "objects": {
           "general": [
             {
@@ -142,60 +143,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "f2ef705613b90044dc7c",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Dim_Customers"
-              }
-            },
-            "Property": "Is Churn"
-          }
-        },
-        "type": "Categorical",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "d",
-              "Entity": "Dim_Customers",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "In": {
-                  "Expressions": [
-                    {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Source": "d"
-                          }
-                        },
-                        "Property": "Is Churn"
-                      }
-                    }
-                  ],
-                  "Values": [
-                    [
-                      {
-                        "Literal": {
-                          "Value": "'Yes'"
-                        }
-                      }
-                    ]
-                  ]
-                }
-              }
-            }
-          ]
-        },
-        "howCreated": "User"
       }
     ]
   }

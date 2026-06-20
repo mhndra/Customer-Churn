@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Fact_Customer Subscriptions"
+                      "Entity": "fact_customer_subscriptions"
                     }
                   },
                   "Property": "Grouped Consumption"
                 }
               },
-              "queryRef": "Fact_Customer Subscriptions.Grouped Consumption",
+              "queryRef": "fact_customer_subscriptions.Grouped Consumption",
               "nativeQueryRef": "Grouped Consumption",
               "active": true
             }
@@ -39,13 +39,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Customers"
+                      "Entity": "dim_customers"
                     }
                   },
                   "Property": "Is Unlimited Data Plan"
                 }
               },
-              "queryRef": "Dim_Customers.Is Unlimited Data Plan",
+              "queryRef": "dim_customers.Is Unlimited Data Plan",
               "nativeQueryRef": "Is Unlimited Data Plan"
             }
           ]

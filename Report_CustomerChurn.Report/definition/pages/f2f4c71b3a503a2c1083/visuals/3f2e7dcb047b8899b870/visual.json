@@ -17,21 +17,16 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Fact_Customer Subscriptions"
-                        }
-                      },
-                      "Property": "Customer Service Calls"
+                    "SourceRef": {
+                      "Entity": "_Measures"
                     }
                   },
-                  "Function": 1
+                  "Property": "Average of Customer Service Calls"
                 }
               },
-              "queryRef": "Sum(Fact_Customer Subscriptions.Customer Service Calls)",
+              "queryRef": "_Measures.Average of Customer Service Calls",
               "nativeQueryRef": "Average of Customer Service Calls"
             }
           ]
@@ -41,18 +36,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "Fact_Customer Subscriptions"
-                      }
-                    },
-                    "Property": "Customer Service Calls"
+                  "SourceRef": {
+                    "Entity": "_Measures"
                   }
                 },
-                "Function": 1
+                "Property": "Average of Customer Service Calls"
               }
             },
             "direction": "Descending"

@@ -22,7 +22,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "Fact_Customer Subscriptions"
+                          "Entity": "fact_customer_subscriptions"
                         }
                       },
                       "Property": "Monthly Charge"
@@ -31,7 +31,7 @@
                   "Function": 1
                 }
               },
-              "queryRef": "Sum(Fact_Customer Subscriptions.Monthly Charge)",
+              "queryRef": "Sum(fact_customer_subscriptions.Monthly Charge)",
               "nativeQueryRef": "Average of Monthly Charge"
             }
           ]
@@ -46,7 +46,7 @@
                   "Column": {
                     "Expression": {
                       "SourceRef": {
-                        "Entity": "Fact_Customer Subscriptions"
+                        "Entity": "fact_customer_subscriptions"
                       }
                     },
                     "Property": "Monthly Charge"

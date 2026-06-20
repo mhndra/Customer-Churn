@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_State"
+                      "Entity": "dim_state"
                     }
                   },
                   "Property": "State Code"
                 }
               },
-              "queryRef": "Dim_State.State Code",
-              "nativeQueryRef": "State Code",
+              "queryRef": "dim_state.State Code",
+              "nativeQueryRef": "State Code1",
               "active": true
             }
           ]

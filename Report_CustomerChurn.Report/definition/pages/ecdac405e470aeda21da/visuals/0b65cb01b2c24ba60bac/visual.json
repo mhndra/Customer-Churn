@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Contracts"
+                      "Entity": "dim_contracts"
                     }
                   },
                   "Property": "Contract Category"
                 }
               },
-              "queryRef": "Dim_Contracts.Contract Category",
+              "queryRef": "dim_contracts.Contract Category",
               "nativeQueryRef": "Contract Category",
               "active": true
             }
@@ -39,13 +39,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Customers"
+                      "Entity": "dim_customers"
                     }
                   },
                   "Property": "Gender"
                 }
               },
-              "queryRef": "Dim_Customers.Gender",
+              "queryRef": "dim_customers.Gender",
               "nativeQueryRef": "Gender"
             }
           ]

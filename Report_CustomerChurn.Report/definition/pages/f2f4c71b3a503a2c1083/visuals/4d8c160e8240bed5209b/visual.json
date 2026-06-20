@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Contracts"
+                      "Entity": "dim_contracts"
                     }
                   },
                   "Property": "Payment Method"
                 }
               },
-              "queryRef": "Dim_Contracts.Payment Method",
-              "nativeQueryRef": "Payment Method",
+              "queryRef": "dim_contracts.Payment Method",
+              "nativeQueryRef": "Payment Method1",
               "active": true
             }
           ]
@@ -39,13 +39,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Contracts"
+                      "Entity": "dim_contracts"
                     }
                   },
                   "Property": "Contract Category"
                 }
               },
-              "queryRef": "Dim_Contracts.Contract Category",
+              "queryRef": "dim_contracts.Contract Category",
               "nativeQueryRef": "Contract Category"
             }
           ]
@@ -59,7 +59,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "Fact_Customer Subscriptions"
+                          "Entity": "fact_customer_subscriptions"
                         }
                       },
                       "Property": "Account Length Months"
@@ -68,7 +68,7 @@
                   "Function": 1
                 }
               },
-              "queryRef": "Sum(Fact_Customer Subscriptions.Account Length Months)",
+              "queryRef": "Sum(fact_customer_subscriptions.Account Length Months)",
               "nativeQueryRef": "Average of Account Length Months",
               "active": true
             }

@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Churn"
+                      "Entity": "dim_churn_descriptions"
                     }
                   },
                   "Property": "Churn Category"
                 }
               },
-              "queryRef": "Dim_Churn.Churn Category",
+              "queryRef": "dim_churn_descriptions.Churn Category",
               "nativeQueryRef": "Churn Category",
               "active": true
             }

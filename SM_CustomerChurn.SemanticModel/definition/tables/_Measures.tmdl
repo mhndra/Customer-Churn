@@ -17,15 +17,19 @@ table _Measures
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 2771f2c5-75cb-4b1d-ac51-569648e01c92
 
-	measure 'Avg Extra International Charges' = SUM('fact_customer_subscriptions'[Extra International Charges]) / [Number of Customers]
-		formatString: 0.00
+	measure 'Average of Extra International Charges' = SUM('fact_customer_subscriptions'[Extra International Charges]) / [Number of Customers]
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		lineageTag: e7f8bf93-53ac-4177-95ed-6fe3c011f721
 
-	measure 'Avg Extra Data Charges' = SUM('fact_customer_subscriptions'[Extra Data Charges]) / [Number of Customers]
-		formatString: 0.00
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Average of Extra Data Charges' = SUM('fact_customer_subscriptions'[Extra Data Charges]) / [Number of Customers]
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		lineageTag: 6a2a36c8-e789-4b06-9eb8-557fc568e1fb
 
-	measure 'Avg Customer Service Calls' = SUM('fact_customer_subscriptions'[Customer Service Calls]) / [Number of Customers]
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Average of Customer Service Calls' = SUM('fact_customer_subscriptions'[Customer Service Calls]) / [Number of Customers]
 		formatString: 0.00
 		lineageTag: 9d7c59ab-729d-499a-9795-e553822f282c
 

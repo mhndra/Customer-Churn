@@ -27,8 +27,7 @@
                 }
               },
               "queryRef": "_Measures.Number of Customers",
-              "nativeQueryRef": "Total Customers",
-              "displayName": "Total Customers"
+              "nativeQueryRef": "Number of Customers"
             }
           ]
         }

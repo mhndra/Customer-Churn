@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Fact_Customer Subscriptions"
+                      "Entity": "fact_customer_subscriptions"
                     }
                   },
                   "Property": "Account Length Months"
                 }
               },
-              "queryRef": "Fact_Customer Subscriptions.Account Length Months",
-              "nativeQueryRef": "Sum of Account Length Months",
+              "queryRef": "fact_customer_subscriptions.Account Length Months",
+              "nativeQueryRef": "Account Length Months",
               "active": true
             }
           ]
@@ -39,13 +39,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Contracts"
+                      "Entity": "dim_contracts"
                     }
                   },
                   "Property": "Contract Type"
                 }
               },
-              "queryRef": "Dim_Contracts.Contract Type",
+              "queryRef": "dim_contracts.Contract Type",
               "nativeQueryRef": "Contract Type"
             }
           ]

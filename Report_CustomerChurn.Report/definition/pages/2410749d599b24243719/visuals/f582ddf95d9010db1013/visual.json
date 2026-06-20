@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Contracts"
+                      "Entity": "dim_contracts"
                     }
                   },
                   "Property": "Contract Type"
                 }
               },
-              "queryRef": "Dim_Contracts.Contract Type",
-              "nativeQueryRef": "Contract Type",
+              "queryRef": "dim_contracts.Contract Type",
+              "nativeQueryRef": "Contract Type1",
               "active": true
             }
           ]
@@ -46,8 +46,7 @@
                 }
               },
               "queryRef": "_Measures.Number of Customers",
-              "nativeQueryRef": "Total Customers",
-              "displayName": "Total Customers"
+              "nativeQueryRef": "Number of Customers"
             }
           ]
         }

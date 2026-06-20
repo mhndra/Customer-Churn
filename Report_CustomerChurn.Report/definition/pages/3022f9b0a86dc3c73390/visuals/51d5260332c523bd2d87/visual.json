@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Contracts"
+                      "Entity": "dim_contracts"
                     }
                   },
                   "Property": "Payment Method"
                 }
               },
-              "queryRef": "Dim_Contracts.Payment Method",
+              "queryRef": "dim_contracts.Payment Method",
               "nativeQueryRef": "Payment Method",
               "active": true
             }

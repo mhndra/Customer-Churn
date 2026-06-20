@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Customers"
+                      "Entity": "dim_customers"
                     }
                   },
                   "Property": "Age Bin"
                 }
               },
-              "queryRef": "Dim_Customers.Age Bin",
+              "queryRef": "dim_customers.Age Bin",
               "nativeQueryRef": "Age Bin",
               "active": true
             }
@@ -127,6 +127,19 @@
           },
           "selector": {
             "metadata": "_Measures.Churn Rate"
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "secRoundRange": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
           }
         }
       ]

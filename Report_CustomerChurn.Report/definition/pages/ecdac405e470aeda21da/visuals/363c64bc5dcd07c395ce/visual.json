@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Contracts"
+                      "Entity": "dim_contracts"
                     }
                   },
                   "Property": "Contract Type"
                 }
               },
-              "queryRef": "Dim_Contracts.Contract Type",
+              "queryRef": "dim_contracts.Contract Type",
               "nativeQueryRef": "Contract Type",
               "active": true
             }

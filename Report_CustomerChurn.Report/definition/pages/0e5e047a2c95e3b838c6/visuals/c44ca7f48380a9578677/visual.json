@@ -17,21 +17,16 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Fact_Customer Subscriptions"
-                        }
-                      },
-                      "Property": "Extra Data Charges"
+                    "SourceRef": {
+                      "Entity": "_Measures"
                     }
                   },
-                  "Function": 1
+                  "Property": "Average of Extra Data Charges"
                 }
               },
-              "queryRef": "Sum(Fact_Customer Subscriptions.Extra Data Charges)",
+              "queryRef": "_Measures.Average of Extra Data Charges",
               "nativeQueryRef": "Average of Extra Data Charges"
             }
           ]
@@ -41,18 +36,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "Fact_Customer Subscriptions"
-                      }
-                    },
-                    "Property": "Extra Data Charges"
+                  "SourceRef": {
+                    "Entity": "_Measures"
                   }
                 },
-                "Function": 1
+                "Property": "Average of Extra Data Charges"
               }
             },
             "direction": "Descending"

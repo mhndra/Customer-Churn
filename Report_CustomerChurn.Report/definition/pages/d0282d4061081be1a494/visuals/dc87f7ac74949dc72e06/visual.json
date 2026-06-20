@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Customers"
+                      "Entity": "dim_customers"
                     }
                   },
                   "Property": "Is Unlimited Data Plan"
                 }
               },
-              "queryRef": "Dim_Customers.Is Unlimited Data Plan",
+              "queryRef": "dim_customers.Is Unlimited Data Plan",
               "nativeQueryRef": "Is Unlimited Data Plan"
             },
             {

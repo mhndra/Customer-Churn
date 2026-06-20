@@ -135,14 +135,17 @@ table fact_customer_subscriptions
 
 	column 'Monthly Charge'
 		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		lineageTag: 0586b7ce-f734-4769-988a-45b2359adf28
 		sourceLineageTag: Monthly Charge
 		summarizeBy: sum
 		sourceColumn: Monthly Charge
 
+		changedProperty = FormatString
+
 		annotation SummarizationSetBy = Automatic
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
 	column 'Extra International Charges'
 		dataType: double
@@ -168,14 +171,17 @@ table fact_customer_subscriptions
 
 	column 'Total Charges'
 		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
 		lineageTag: f9217dc4-7042-4b83-bb6c-9b5c7b5346fa
 		sourceLineageTag: Total Charges
 		summarizeBy: sum
 		sourceColumn: Total Charges
 
+		changedProperty = FormatString
+
 		annotation SummarizationSetBy = Automatic
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
 	column 'Loaded at'
 		dataType: dateTime

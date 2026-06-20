@@ -22,7 +22,7 @@
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "Fact_Customer Subscriptions"
+                          "Entity": "fact_customer_subscriptions"
                         }
                       },
                       "Property": "Customer Service Calls"
@@ -31,9 +31,8 @@
                   "Function": 0
                 }
               },
-              "queryRef": "Sum(Fact_Customer Subscriptions.Customer Service Calls)",
-              "nativeQueryRef": "Total Customer Service Calls",
-              "displayName": "Total Customer Service Calls"
+              "queryRef": "Sum(fact_customer_subscriptions.Customer Service Calls)",
+              "nativeQueryRef": "Sum of Customer Service Calls"
             }
           ]
         }
@@ -47,7 +46,7 @@
                   "Column": {
                     "Expression": {
                       "SourceRef": {
-                        "Entity": "Fact_Customer Subscriptions"
+                        "Entity": "fact_customer_subscriptions"
                       }
                     },
                     "Property": "Customer Service Calls"

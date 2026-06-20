@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_State"
+                      "Entity": "dim_state"
                     }
                   },
                   "Property": "State Code"
                 }
               },
-              "queryRef": "Dim_State.State Code",
-              "nativeQueryRef": "State Code",
+              "queryRef": "dim_state.State Code",
+              "nativeQueryRef": "State Code1",
               "active": true
             }
           ]
@@ -39,13 +39,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Customers"
+                      "Entity": "dim_customers"
                     }
                   },
                   "Property": "Is Churn"
                 }
               },
-              "queryRef": "Dim_Customers.Is Churn",
+              "queryRef": "dim_customers.Is Churn",
               "nativeQueryRef": "Is Churn"
             }
           ]
@@ -54,21 +54,16 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Fact_Customer Subscriptions"
-                        }
-                      },
-                      "Property": "Customer Service Calls"
+                    "SourceRef": {
+                      "Entity": "_Measures"
                     }
                   },
-                  "Function": 1
+                  "Property": "Average of Customer Service Calls"
                 }
               },
-              "queryRef": "Sum(Fact_Customer Subscriptions.Customer Service Calls)",
+              "queryRef": "_Measures.Average of Customer Service Calls",
               "nativeQueryRef": "Average of Customer Service Calls"
             }
           ]
@@ -78,18 +73,19 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "Dim_State"
+                    "Entity": "_Measures"
                   }
                 },
-                "Property": "State Code"
+                "Property": "Average of Customer Service Calls"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
-        ]
+        ],
+        "isDefaultSort": true
       }
     },
     "objects": {

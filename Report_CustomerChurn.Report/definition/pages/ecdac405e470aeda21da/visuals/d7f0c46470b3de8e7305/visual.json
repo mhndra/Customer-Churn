@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Customers"
+                      "Entity": "dim_contracts"
                     }
                   },
-                  "Property": "Number of Customers in Group"
+                  "Property": "Payment Method"
                 }
               },
-              "queryRef": "Dim_Customers.Number of Customers in Group",
-              "nativeQueryRef": "Number of Customers in Group",
+              "queryRef": "dim_contracts.Payment Method",
+              "nativeQueryRef": "Count of Payment Method",
               "active": true
             }
           ]
@@ -39,13 +39,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Dim_Customers"
+                      "Entity": "dim_customers"
                     }
                   },
                   "Property": "Is Contract Group"
                 }
               },
-              "queryRef": "Dim_Customers.Is Contract Group",
+              "queryRef": "dim_customers.Is Contract Group",
               "nativeQueryRef": "Is Contract Group"
             }
           ]
@@ -54,22 +54,17 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Fact_Customer Subscriptions"
-                        }
-                      },
-                      "Property": "Monthly Charge"
+                    "SourceRef": {
+                      "Entity": "_Measures"
                     }
                   },
-                  "Function": 1
+                  "Property": "Number of Customers"
                 }
               },
-              "queryRef": "Avg(Fact_Customer Subscriptions.Monthly Charge)",
-              "nativeQueryRef": "Average of Monthly Charge"
+              "queryRef": "_Measures.Number of Customers",
+              "nativeQueryRef": "Number of Customers"
             }
           ]
         },
@@ -96,18 +91,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "Fact_Customer Subscriptions"
-                      }
-                    },
-                    "Property": "Monthly Charge"
+                  "SourceRef": {
+                    "Entity": "_Measures"
                   }
                 },
-                "Function": 1
+                "Property": "Number of Customers"
               }
             },
             "direction": "Descending"

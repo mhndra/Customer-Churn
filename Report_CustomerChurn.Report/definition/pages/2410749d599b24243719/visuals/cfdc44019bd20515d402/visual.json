@@ -27,8 +27,7 @@
                 }
               },
               "queryRef": "_Measures.Number of Churned Customers",
-              "nativeQueryRef": "Total Churned Customers",
-              "displayName": "Total Churned Customers"
+              "nativeQueryRef": "Number of Churned Customers"
             }
           ]
         }
