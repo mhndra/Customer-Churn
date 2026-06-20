@@ -1,0 +1,121 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "d7f0c46470b3de8e7305",
+  "position": {
+    "x": 498.48544328991255,
+    "y": 0,
+    "z": 5000,
+    "height": 380.34727464895064,
+    "width": 522.97750264230717,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "lineStackedColumnComboChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Customers"
+                    }
+                  },
+                  "Property": "Number of Customers in Group"
+                }
+              },
+              "queryRef": "Dim_Customers.Number of Customers in Group",
+              "nativeQueryRef": "Number of Customers in Group",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Customers"
+                    }
+                  },
+                  "Property": "Is Contract Group"
+                }
+              },
+              "queryRef": "Dim_Customers.Is Contract Group",
+              "nativeQueryRef": "Is Contract Group"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fact_Customer Subscriptions"
+                        }
+                      },
+                      "Property": "Monthly Charge"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Avg(Fact_Customer Subscriptions.Monthly Charge)",
+              "nativeQueryRef": "Average of Monthly Charge"
+            }
+          ]
+        },
+        "Y2": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Churn Rate"
+                }
+              },
+              "queryRef": "_Measures.Churn Rate",
+              "nativeQueryRef": "Churn Rate"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Fact_Customer Subscriptions"
+                      }
+                    },
+                    "Property": "Monthly Charge"
+                  }
+                },
+                "Function": 1
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

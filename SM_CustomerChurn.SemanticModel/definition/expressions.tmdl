@@ -7,5 +7,3 @@ expression 'DirectLake - LH_CustomerChurn' =
 
 	annotation PBI_IncludeFutureArtifacts = False
 
-	annotation PBI_RemovedChildren = [{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[dbo].[Bronze_Customer Churn]"}},"objectType":"Table"},{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[silver].[customer_churn]"}},"objectType":"Table"},{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[dbo].[Silver_Customer Churn]"}},"objectType":"Table"}]
-

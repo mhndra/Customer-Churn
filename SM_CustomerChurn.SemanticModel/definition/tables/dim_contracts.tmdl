@@ -1,0 +1,48 @@
+table dim_contracts
+	lineageTag: bbede22c-718a-411a-b95d-190d0626da2b
+	sourceLineageTag: [gold].[dim_contracts]
+
+	column 'Contract Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8e0a5201-5669-4ee7-bc32-6b555fc56b7c
+		sourceLineageTag: Contract Key
+		summarizeBy: none
+		sourceColumn: Contract Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Contract Type'
+		dataType: string
+		lineageTag: c249fafd-6bd9-4e82-9f04-f4a902cc7df2
+		sourceLineageTag: Contract Type
+		summarizeBy: none
+		sourceColumn: Contract Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Contract Category'
+		dataType: string
+		lineageTag: 0a2cf56a-6f93-4946-a47e-cb923ebd6182
+		sourceLineageTag: Contract Category
+		summarizeBy: none
+		sourceColumn: Contract Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Method'
+		dataType: string
+		lineageTag: 8d9fa3a7-957f-4516-88af-86907e039c94
+		sourceLineageTag: Payment Method
+		summarizeBy: none
+		sourceColumn: Payment Method
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_contracts = entity
+		mode: directLake
+		source
+			entityName: dim_contracts
+			schemaName: gold
+			expressionSource: 'DirectLake - LH_CustomerChurn'
+

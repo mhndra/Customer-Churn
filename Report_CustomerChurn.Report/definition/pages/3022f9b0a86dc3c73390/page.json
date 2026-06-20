@@ -1,0 +1,9 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "3022f9b0a86dc3c73390",
+  "displayName": "Contract Type",
+  "displayOption": "FitToPage",
+  "height": 960,
+  "width": 1640,
+  "visibility": "HiddenInViewMode"
+}

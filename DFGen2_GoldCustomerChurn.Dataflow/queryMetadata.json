@@ -7,58 +7,58 @@
   "queryGroups": [],
   "documentLocale": "en-US",
   "queriesMetadata": {
-    "Gold Dim State": {
+    "gold dim_state": {
       "queryId": "cfe94d7a-b306-4f94-a68d-7f05c62dc9c4",
-      "queryName": "Gold Dim State",
+      "queryName": "gold dim_state",
       "loadEnabled": false
     },
-    "Gold Dim Contracts": {
+    "gold dim_contracts": {
       "queryId": "ff2d7e03-9951-446e-9042-f26c63721fce",
-      "queryName": "Gold Dim Contracts",
+      "queryName": "gold dim_contracts",
       "loadEnabled": false
     },
-    "Gold Dim Churn": {
+    "gold dim_churn_descriptions": {
       "queryId": "b82508bb-6c58-40cf-b976-ed8c04889148",
-      "queryName": "Gold Dim Churn",
+      "queryName": "gold dim_churn_descriptions",
       "loadEnabled": false
     },
-    "Gold Dim Customers": {
+    "gold dim_customers": {
       "queryId": "6869b478-6f54-4bb2-839a-68d98703950e",
-      "queryName": "Gold Dim Customers",
+      "queryName": "gold dim_customers",
       "loadEnabled": false
     },
-    "Gold Fact Customer Subscriptions": {
+    "gold fact_customer_subscriptions": {
       "queryId": "07b4ceae-a35c-466a-800b-27a9982fd674",
-      "queryName": "Gold Fact Customer Subscriptions",
+      "queryName": "gold fact_customer_subscriptions",
       "loadEnabled": false
     },
     "Gold Dim State_DataDestination": {
-      "queryId": "ecf290a0-80ab-4fe5-9664-2956633d7e00",
+      "queryId": "28d3f9f5-fb87-4dc7-960c-749c2fa58c54",
       "queryName": "Gold Dim State_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     },
-    "Gold Dim Contracts_DataDestination": {
-      "queryId": "d5eb5535-b51a-42f4-a4cc-ddc253f78442",
-      "queryName": "Gold Dim Contracts_DataDestination",
+    "gold dim_contracts_DataDestination": {
+      "queryId": "17708706-b767-456b-9a2a-3d04771448c8",
+      "queryName": "gold dim_contracts_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     },
-    "Gold Dim Churn_DataDestination": {
-      "queryId": "6b0a6e0b-ee51-44fc-85a2-0be00ff7ff66",
-      "queryName": "Gold Dim Churn_DataDestination",
-      "isHidden": true,
-      "loadEnabled": false
-    },
-    "Gold Dim Customers_DataDestination": {
-      "queryId": "5a5e1168-e546-4052-8114-82bd203f0025",
-      "queryName": "Gold Dim Customers_DataDestination",
+    "gold dim_churn_descriptions_DataDestination": {
+      "queryId": "596200ad-fe7d-4d70-8d0b-d272d23566fb",
+      "queryName": "gold dim_churn_descriptions_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     },
     "Gold Fact Customer Subscriptions_DataDestination": {
-      "queryId": "ebdca0f5-ef12-424c-b57c-0de971054572",
+      "queryId": "f66dad3e-057e-4ada-9741-187241f0decc",
       "queryName": "Gold Fact Customer Subscriptions_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "gold dim_customers_DataDestination": {
+      "queryId": "64d72aac-ce30-41e8-ae58-66997302b74d",
+      "queryName": "gold dim_customers_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     }
@@ -67,7 +67,7 @@
     {
       "path": "Lakehouse",
       "kind": "Lakehouse",
-      "connectionId": "{\"ClusterId\":\"e69ed8e0-fbf5-405c-86a9-4e2ad134b674\",\"DatasourceId\":\"6f28c340-b111-41d0-9ad6-02af5b920e27\"}"
+      "connectionId": "{\"ClusterId\":\"75b7a0ca-0215-4f34-9ad1-6cd67aef92a7\",\"DatasourceId\":\"119926fe-cc4d-42e4-ae3b-0fcfb4ff7c62\"}"
     }
   ]
 }

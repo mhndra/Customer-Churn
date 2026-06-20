@@ -1,0 +1,196 @@
+table fact_customer_subscriptions
+	lineageTag: 7000506d-b87e-430b-aa59-4809fd51ae5b
+	sourceLineageTag: [gold].[fact_customer_subscriptions]
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: c5385d1e-65fc-4c9a-b945-174f2e018086
+		sourceLineageTag: Index
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: c0fc08ec-5796-4f4a-999f-e2c2fc3ad544
+		sourceLineageTag: Customer Key
+		summarizeBy: none
+		sourceColumn: Customer Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'State Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4da5ec8b-618c-4be1-a2cf-ffba2fd5a92c
+		sourceLineageTag: State Key
+		summarizeBy: none
+		sourceColumn: State Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Contract Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3012f134-5202-40cf-aaf2-58a12b152a99
+		sourceLineageTag: Contract Key
+		summarizeBy: none
+		sourceColumn: Contract Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Churn Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 34d3712c-23bf-44cc-b440-891c955448b0
+		sourceLineageTag: Churn Key
+		summarizeBy: none
+		sourceColumn: Churn Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Grouped Consumption'
+		dataType: string
+		lineageTag: f1b8e9a0-c559-4742-a0cf-37aa22b99aa7
+		sourceLineageTag: Grouped Consumption
+		summarizeBy: none
+		sourceColumn: Grouped Consumption
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Avg Monthly GB Download'
+		dataType: int64
+		formatString: 0
+		lineageTag: aea164cf-ee23-48b3-b837-b6a34a5bac88
+		sourceLineageTag: Avg Monthly GB Download
+		summarizeBy: sum
+		sourceColumn: Avg Monthly GB Download
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Local Calls'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9fcc68a3-4247-44b0-82cf-e1228deacca8
+		sourceLineageTag: Local Calls
+		summarizeBy: sum
+		sourceColumn: Local Calls
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Local Mins'
+		dataType: double
+		lineageTag: d39c9f8b-103e-43fa-84c3-685397eb869a
+		sourceLineageTag: Local Mins
+		summarizeBy: sum
+		sourceColumn: Local Mins
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'International Calls'
+		dataType: int64
+		formatString: 0
+		lineageTag: ba09b3d5-1682-47cd-ad4c-6b39c74bcf9c
+		sourceLineageTag: International Calls
+		summarizeBy: sum
+		sourceColumn: International Calls
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'International Mins'
+		dataType: double
+		lineageTag: f88493a3-eb2f-42dd-a969-9e77c1d4c65b
+		sourceLineageTag: International Mins
+		summarizeBy: sum
+		sourceColumn: International Mins
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Customer Service Calls'
+		dataType: int64
+		formatString: 0
+		lineageTag: 40b4d35b-e231-4acb-97e9-76616a713586
+		sourceLineageTag: Customer Service Calls
+		summarizeBy: sum
+		sourceColumn: Customer Service Calls
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account Length Months'
+		dataType: int64
+		formatString: 0
+		lineageTag: af654452-5335-4485-b909-f729b742bc77
+		sourceLineageTag: Account Length Months
+		summarizeBy: sum
+		sourceColumn: Account Length Months
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Monthly Charge'
+		dataType: double
+		lineageTag: 0586b7ce-f734-4769-988a-45b2359adf28
+		sourceLineageTag: Monthly Charge
+		summarizeBy: sum
+		sourceColumn: Monthly Charge
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Extra International Charges'
+		dataType: double
+		lineageTag: 83d50243-d79a-4724-a310-937ae40ce4fc
+		sourceLineageTag: Extra International Charges
+		summarizeBy: sum
+		sourceColumn: Extra International Charges
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Extra Data Charges'
+		dataType: double
+		lineageTag: 2fc6bc36-e61d-47d0-8094-dfb314febcff
+		sourceLineageTag: Extra Data Charges
+		summarizeBy: sum
+		sourceColumn: Extra Data Charges
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Total Charges'
+		dataType: double
+		lineageTag: f9217dc4-7042-4b83-bb6c-9b5c7b5346fa
+		sourceLineageTag: Total Charges
+		summarizeBy: sum
+		sourceColumn: Total Charges
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Loaded at'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0a91eb26-1fc0-4f82-8b80-66f93ab38f49
+		sourceLineageTag: Loaded at
+		summarizeBy: none
+		sourceColumn: Loaded at
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_customer_subscriptions = entity
+		mode: directLake
+		source
+			entityName: fact_customer_subscriptions
+			schemaName: gold
+			expressionSource: 'DirectLake - LH_CustomerChurn'
+

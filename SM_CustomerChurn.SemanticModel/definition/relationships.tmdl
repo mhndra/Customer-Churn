@@ -1,16 +1,20 @@
-relationship 541374cb-42a6-ef6d-50a1-eb6fcba0ef5c
-	fromColumn: 'Fact_Customer Subscriptions'.'State Key'
-	toColumn: Dim_State.'State Key'
+relationship 0fff5f8a-00a7-bbc2-8a14-d0aa83fde720
+	relyOnReferentialIntegrity
+	fromColumn: fact_customer_subscriptions.'Churn Key'
+	toColumn: dim_churn_descriptions.'Churn Key'
 
-relationship 909a46fa-f2a4-5a41-b4a5-bf582e753ffc
-	fromColumn: 'Fact_Customer Subscriptions'.'Churn Key'
-	toColumn: Dim_Churn.'Churn Key'
+relationship 2e55a9b1-e57e-86b5-8ff5-281e584ee84f
+	relyOnReferentialIntegrity
+	fromColumn: fact_customer_subscriptions.'State Key'
+	toColumn: dim_state.'State Key'
 
-relationship 05298c4c-ed29-2cd4-46ff-f7cb0cab1164
-	fromColumn: 'Fact_Customer Subscriptions'.'Contract Key'
-	toColumn: Dim_Contracts.'Contract Key'
+relationship 55254246-417e-7ea8-d0b1-c94c387c7528
+	relyOnReferentialIntegrity
+	fromColumn: fact_customer_subscriptions.'Contract Key'
+	toColumn: dim_contracts.'Contract Key'
 
-relationship 7203c82f-88a2-c4c8-a49e-0a7e283de85f
-	fromColumn: 'Fact_Customer Subscriptions'.'Customer Key'
-	toColumn: Dim_Customers.'Customer Key'
+relationship 159641a1-2e5e-ebe3-963d-36d65e6acdb2
+	relyOnReferentialIntegrity
+	fromColumn: fact_customer_subscriptions.'Customer Key'
+	toColumn: dim_customers.'Customer Key'
 

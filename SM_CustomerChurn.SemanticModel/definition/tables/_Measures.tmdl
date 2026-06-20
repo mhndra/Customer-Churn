@@ -1,15 +1,15 @@
 table _Measures
 	lineageTag: 77511a19-a22d-4b8f-a25b-d89e1d217946
 
-	measure 'Number of Customers' = CALCULATE(COUNT(Dim_Customers[Customer ID]), CROSSFILTER('Fact_Customer Subscriptions'[Customer Key], Dim_Customers[Customer Key], Both))
+	measure 'Number of Customers' = CALCULATE(COUNT(dim_customers[Customer ID]), CROSSFILTER('fact_customer_subscriptions'[Customer Key], dim_customers[Customer Key], Both))
 		formatString: 0
 		lineageTag: f7d85b1a-5086-4fbe-b19d-9554df6b3820
 
-	measure 'Number of Unique Customers' = CALCULATE(DISTINCTCOUNT(Dim_Customers[Customer ID]), CROSSFILTER('Fact_Customer Subscriptions'[Customer Key], Dim_Customers[Customer Key], Both))
+	measure 'Number of Unique Customers' = CALCULATE(DISTINCTCOUNT(dim_customers[Customer ID]), CROSSFILTER('fact_customer_subscriptions'[Customer Key], dim_customers[Customer Key], Both))
 		formatString: 0
 		lineageTag: ee6e6b94-e26d-4c31-b2c2-e1cfce53d744
 
-	measure 'Number of Churned Customers' = CALCULATE(SUM(Dim_Customers[Churn Flag]), CROSSFILTER('Fact_Customer Subscriptions'[Customer Key], Dim_Customers[Customer Key], Both))
+	measure 'Number of Churned Customers' = CALCULATE(SUM(dim_customers[Churn Flag]), CROSSFILTER('fact_customer_subscriptions'[Customer Key], dim_customers[Customer Key], Both))
 		formatString: 0
 		lineageTag: 49bf774a-9b9a-48f6-9fdb-b4b179ae2856
 
@@ -17,23 +17,23 @@ table _Measures
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 2771f2c5-75cb-4b1d-ac51-569648e01c92
 
-	measure 'Avg Extra International Charges' = SUM('Fact_Customer Subscriptions'[Extra International Charges]) / [Number of Customers]
+	measure 'Avg Extra International Charges' = SUM('fact_customer_subscriptions'[Extra International Charges]) / [Number of Customers]
 		formatString: 0.00
 		lineageTag: e7f8bf93-53ac-4177-95ed-6fe3c011f721
 
-	measure 'Avg Extra Data Charges' = SUM('Fact_Customer Subscriptions'[Extra Data Charges]) / [Number of Customers]
+	measure 'Avg Extra Data Charges' = SUM('fact_customer_subscriptions'[Extra Data Charges]) / [Number of Customers]
 		formatString: 0.00
 		lineageTag: 6a2a36c8-e789-4b06-9eb8-557fc568e1fb
 
-	measure 'Avg Customer Service Calls' = SUM('Fact_Customer Subscriptions'[Customer Service Calls]) / [Number of Customers]
+	measure 'Avg Customer Service Calls' = SUM('fact_customer_subscriptions'[Customer Service Calls]) / [Number of Customers]
 		formatString: 0.00
 		lineageTag: 9d7c59ab-729d-499a-9795-e553822f282c
 
-	measure 'Churn Rate Monthly Contracts' = CALCULATE([Churn Rate], FILTER(Dim_Contracts, Dim_Contracts[Contract Category] = "Monthly Contracts"))
+	measure 'Churn Rate Monthly Contracts' = CALCULATE([Churn Rate], FILTER(dim_contracts, dim_contracts[Contract Category] = "Monthly Contracts"))
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 8b43d427-4aa2-47ff-a410-aa6716ab5d61
 
-	measure 'Churn Rate Yearly Contracts' = CALCULATE([Churn Rate], FILTER(Dim_Contracts, Dim_Contracts[Contract Category] = "Yearly Contracts"))
+	measure 'Churn Rate Yearly Contracts' = CALCULATE([Churn Rate], FILTER(dim_contracts, dim_contracts[Contract Category] = "Yearly Contracts"))
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 00b8e9f7-ba01-45e1-84f5-0fe3b09d649c
 

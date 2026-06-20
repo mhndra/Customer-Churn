@@ -13,9 +13,9 @@ annotation __PBI_TimeIntelligenceEnabled = 1
 annotation PBI_ProTooling = ["DirectLakeOnOneLakeInWeb","WebModelingEdit","CalcGroup"]
 
 ref table _Measures
-ref table Dim_Churn
-ref table Dim_State
-ref table 'Fact_Customer Subscriptions'
-ref table Dim_Contracts
-ref table Dim_Customers
+ref table dim_state
+ref table dim_churn_descriptions
+ref table dim_contracts
+ref table fact_customer_subscriptions
+ref table dim_customers
 

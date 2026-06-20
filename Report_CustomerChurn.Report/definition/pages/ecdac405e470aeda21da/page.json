@@ -1,0 +1,9 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "ecdac405e470aeda21da",
+  "displayName": "Groups and Categories",
+  "displayOption": "FitToPage",
+  "height": 960,
+  "width": 1640,
+  "visibility": "HiddenInViewMode"
+}

@@ -1,0 +1,88 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "fb872317b8bd1e805c72",
+  "position": {
+    "x": 1227.4843863670681,
+    "y": 170.00370609309158,
+    "z": 10000,
+    "height": 220.42853417155092,
+    "width": 206.02144043484827,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Which of the following is true?"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "In general, the churn rate has an increasing trend through the age brackets."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The churn rate for customers aged more than 80 is exactly 52%."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "As the age increases the average churn rate for age brackets also increases."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

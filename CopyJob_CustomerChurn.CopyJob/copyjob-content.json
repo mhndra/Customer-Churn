@@ -1,0 +1,427 @@
+{
+  "properties": {
+    "jobMode": "CDC",
+    "source": {
+      "type": "DelimitedText",
+      "connectionSettings": {
+        "type": "Lakehouse",
+        "typeProperties": {
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "artifactId": "45ba854c-2d16-842c-4575-e81528e8d742",
+          "rootFolder": "Files"
+        }
+      }
+    },
+    "destination": {
+      "type": "LakehouseTable",
+      "connectionSettings": {
+        "type": "Lakehouse",
+        "typeProperties": {
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "artifactId": "45ba854c-2d16-842c-4575-e81528e8d742",
+          "rootFolder": "Tables"
+        }
+      }
+    },
+    "policy": {
+      "timeout": "0.12:00:00",
+      "retry": 0
+    }
+  },
+  "activities": [
+    {
+      "id": "1640b4ae-dd1d-4295-adb6-13ef8c91d6e5",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "location": {
+              "type": "LakehouseLocation",
+              "folderPath": "customer_churn"
+            },
+            "columnDelimiter": ",",
+            "escapeChar": "\\",
+            "firstRowAsHeader": true,
+            "quoteChar": "\""
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental"
+          },
+          "storeSettings": {
+            "recursive": true,
+            "enablePartitionDiscovery": false
+          },
+          "formatSettings": {}
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "schema": "bronze",
+            "table": "customer_churn"
+          },
+          "applyVOrder": false
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator",
+          "mappings": [
+            {
+              "source": {
+                "name": "Customer ID",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Customer ID",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Churn Label",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Churn Label",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Account Length (in months)",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Account Length (in months)",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Local Calls",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Local Calls",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Local Mins",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Local Mins",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Intl Calls",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Intl Calls",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Intl Mins",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Intl Mins",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Intl Active",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Intl Active",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Intl Plan",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Intl Plan",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Extra International Charges",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Extra International Charges",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Customer Service Calls",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Customer Service Calls",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Avg Monthly GB Download",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Avg Monthly GB Download",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Unlimited Data Plan",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Unlimited Data Plan",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Extra Data Charges",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Extra Data Charges",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "State",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "State",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Phone Number",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Phone Number",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Gender",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Gender",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Age",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Age",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Under 30",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Under 30",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Senior",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Senior",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Group",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Group",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Number of Customers in Group",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Number of Customers in Group",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Device Protection & Online Backup",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Device Protection & Online Backup",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Contract Type",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Contract Type",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Payment Method",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Payment Method",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Monthly Charge",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Monthly Charge",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Total Charges",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Total Charges",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Churn Category",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Churn Category",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Churn Reason",
+                "type": "String",
+                "physicalType": "String"
+              },
+              "destination": {
+                "name": "Churn Reason",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Loaded at",
+                "type": "String"
+              },
+              "destination": {
+                "name": "Loaded at",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "File Name",
+                "type": "String"
+              },
+              "destination": {
+                "name": "File Name",
+                "physicalType": "string"
+              }
+            }
+          ]
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        },
+        "auditColumns": [
+          {
+            "name": "Loaded at",
+            "value": "$$NOW"
+          },
+          {
+            "name": "File Name",
+            "value": "$$FILEPATH"
+          }
+        ]
+      }
+    }
+  ]
+}
