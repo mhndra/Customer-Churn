@@ -12,9 +12,9 @@
       "queryName": "silver customer_churn_enriched",
       "loadEnabled": false
     },
-    "bronze customer_churn_DataDestination": {
-      "queryId": "ad529790-02e0-4e78-bb6d-d5f159af5adb",
-      "queryName": "bronze customer_churn_DataDestination",
+    "silver customer_churn_enriched_DataDestination": {
+      "queryId": "1a01c436-0743-4df2-99de-b469c1beb434",
+      "queryName": "silver customer_churn_enriched_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     }

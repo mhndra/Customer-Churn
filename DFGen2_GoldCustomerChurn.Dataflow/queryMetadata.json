@@ -32,33 +32,33 @@
       "queryName": "gold fact_customer_subscriptions",
       "loadEnabled": false
     },
-    "Gold Dim State_DataDestination": {
-      "queryId": "28d3f9f5-fb87-4dc7-960c-749c2fa58c54",
-      "queryName": "Gold Dim State_DataDestination",
+    "gold dim_state_DataDestination": {
+      "queryId": "d870f1ae-3364-4192-8179-60f0c4ff15fa",
+      "queryName": "gold dim_state_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     },
     "gold dim_contracts_DataDestination": {
-      "queryId": "17708706-b767-456b-9a2a-3d04771448c8",
+      "queryId": "a530c1e7-ae21-4b67-a4b0-65100e67abc7",
       "queryName": "gold dim_contracts_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     },
+    "gold dim_customers_DataDestination": {
+      "queryId": "40a51932-5d54-4346-be46-fc6fcd6255e2",
+      "queryName": "gold dim_customers_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
     "gold dim_churn_descriptions_DataDestination": {
-      "queryId": "596200ad-fe7d-4d70-8d0b-d272d23566fb",
+      "queryId": "014649f6-1a41-4735-99cb-f2b11bc37190",
       "queryName": "gold dim_churn_descriptions_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     },
-    "Gold Fact Customer Subscriptions_DataDestination": {
-      "queryId": "f66dad3e-057e-4ada-9741-187241f0decc",
-      "queryName": "Gold Fact Customer Subscriptions_DataDestination",
-      "isHidden": true,
-      "loadEnabled": false
-    },
-    "gold dim_customers_DataDestination": {
-      "queryId": "64d72aac-ce30-41e8-ae58-66997302b74d",
-      "queryName": "gold dim_customers_DataDestination",
+    "gold fact_customer_subscriptions_DataDestination": {
+      "queryId": "78fdd42e-9b72-4c09-930c-55887623d367",
+      "queryName": "gold fact_customer_subscriptions_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     }

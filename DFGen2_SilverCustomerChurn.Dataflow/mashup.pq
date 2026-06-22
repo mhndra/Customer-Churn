@@ -1,6 +1,6 @@
 [StagingDefinition = [Kind = "FastCopy"]]
 section Section1;
-[DataDestinations = {[Definition = [Kind = "Reference", QueryName = "bronze customer_churn_DataDestination", IsNewTarget = true], Settings = [Kind = "Automatic", TypeSettings = [Kind = "Table"]]]}]
+[DataDestinations = {[Definition = [Kind = "Reference", QueryName = "silver customer_churn_enriched_DataDestination", IsNewTarget = true], Settings = [Kind = "Automatic", TypeSettings = [Kind = "Table"]]]}]
 shared #"silver customer_churn_enriched" = let
   Source = Lakehouse.Contents(null),
   Navigation = Source{[workspaceId = "a298258a-25c5-47b7-b809-d2c4b6246ebf"]}[Data],
@@ -20,11 +20,11 @@ shared #"silver customer_churn_enriched" = let
   #"Replaced International Plan value 2" = Table.ReplaceValue(#"Replaced International Plan value 1", "no", "No", Replacer.ReplaceText, {"International Plan"})
 in
   #"Replaced International Plan value 2";
-shared #"bronze customer_churn_DataDestination" = let
+shared #"silver customer_churn_enriched_DataDestination" = let
   Pattern = Lakehouse.Contents([CreateNavigationProperties = false, EnableFolding = false, HierarchicalNavigation = true, EnableVorder = true, OutputMetadataRefresh = true]),
   Navigation_1 = Pattern{[workspaceId = "a298258a-25c5-47b7-b809-d2c4b6246ebf"]}[Data],
   Navigation_2 = Navigation_1{[lakehouseId = "a2cf5112-d7cc-44e2-bd1f-0e270656104e"]}[Data],
-  Navigation_3 = Navigation_2{[Id = "silver", ItemKind = "Schema"]}[Data],
+  Navigation_3 = Navigation_2{[Id = "silver_dataflow", ItemKind = "Schema"]}[Data],
   TableNavigation = Navigation_3{[Id = "customer_churn_enriched", ItemKind = "Table"]}?[Data]?
 in
   TableNavigation;
