@@ -3,8 +3,7 @@ table dim_state
 	sourceLineageTag: [gold].[dim_state]
 
 	column 'State Key'
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: 4a5e3b3a-974c-492b-93da-a637f4cc88b5
 		sourceLineageTag: State Key
 		summarizeBy: none
@@ -18,6 +17,15 @@ table dim_state
 		sourceLineageTag: State Code
 		summarizeBy: none
 		sourceColumn: State Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'State Name'
+		dataType: string
+		lineageTag: 41cc8936-ba48-4996-bae5-83e3946b49bc
+		sourceLineageTag: State Name
+		summarizeBy: none
+		sourceColumn: State Name
 
 		annotation SummarizationSetBy = Automatic
 

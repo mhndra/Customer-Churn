@@ -25,14 +25,14 @@
                           "Entity": "fact_customer_subscriptions"
                         }
                       },
-                      "Property": "Monthly Charge"
+                      "Property": "Monthly Charges"
                     }
                   },
                   "Function": 1
                 }
               },
-              "queryRef": "Sum(fact_customer_subscriptions.Monthly Charge)",
-              "nativeQueryRef": "Average of Monthly Charge"
+              "queryRef": "Sum(fact_customer_subscriptions.Monthly Charges)",
+              "nativeQueryRef": "Average of Monthly Charges"
             }
           ]
         }
@@ -49,7 +49,7 @@
                         "Entity": "fact_customer_subscriptions"
                       }
                     },
-                    "Property": "Monthly Charge"
+                    "Property": "Monthly Charges"
                   }
                 },
                 "Function": 1

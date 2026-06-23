@@ -2,19 +2,8 @@ table fact_customer_subscriptions
 	lineageTag: 7000506d-b87e-430b-aa59-4809fd51ae5b
 	sourceLineageTag: [gold].[fact_customer_subscriptions]
 
-	column Index
-		dataType: int64
-		formatString: 0
-		lineageTag: c5385d1e-65fc-4c9a-b945-174f2e018086
-		sourceLineageTag: Index
-		summarizeBy: sum
-		sourceColumn: Index
-
-		annotation SummarizationSetBy = Automatic
-
 	column 'Customer Key'
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: c0fc08ec-5796-4f4a-999f-e2c2fc3ad544
 		sourceLineageTag: Customer Key
 		summarizeBy: none
@@ -23,8 +12,7 @@ table fact_customer_subscriptions
 		annotation SummarizationSetBy = Automatic
 
 	column 'State Key'
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: 4da5ec8b-618c-4be1-a2cf-ffba2fd5a92c
 		sourceLineageTag: State Key
 		summarizeBy: none
@@ -33,22 +21,11 @@ table fact_customer_subscriptions
 		annotation SummarizationSetBy = Automatic
 
 	column 'Contract Key'
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: 3012f134-5202-40cf-aaf2-58a12b152a99
 		sourceLineageTag: Contract Key
 		summarizeBy: none
 		sourceColumn: Contract Key
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'Churn Key'
-		dataType: int64
-		formatString: 0
-		lineageTag: 34d3712c-23bf-44cc-b440-891c955448b0
-		sourceLineageTag: Churn Key
-		summarizeBy: none
-		sourceColumn: Churn Key
 
 		annotation SummarizationSetBy = Automatic
 
@@ -133,20 +110,6 @@ table fact_customer_subscriptions
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Monthly Charge'
-		dataType: double
-		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
-		lineageTag: 0586b7ce-f734-4769-988a-45b2359adf28
-		sourceLineageTag: Monthly Charge
-		summarizeBy: sum
-		sourceColumn: Monthly Charge
-
-		changedProperty = FormatString
-
-		annotation SummarizationSetBy = Automatic
-
-		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
-
 	column 'Extra International Charges'
 		dataType: double
 		lineageTag: 83d50243-d79a-4724-a310-937ae40ce4fc
@@ -192,6 +155,38 @@ table fact_customer_subscriptions
 		sourceColumn: Loaded at
 
 		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Subscription Key'
+		dataType: string
+		lineageTag: fd1ec8e0-2d5f-47c4-ad08-eda706ec44e4
+		sourceLineageTag: Customer Subscription Key
+		summarizeBy: none
+		sourceColumn: Customer Subscription Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Churn Description Key'
+		dataType: string
+		lineageTag: 11388dbb-fdc6-46e0-8fdb-c38f6925da1d
+		sourceLineageTag: Churn Description Key
+		summarizeBy: none
+		sourceColumn: Churn Description Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Monthly Charges'
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 673dfb52-a30b-4f14-8139-2872c45732b2
+		sourceLineageTag: Monthly Charges
+		summarizeBy: sum
+		sourceColumn: Monthly Charges
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
 	partition fact_customer_subscriptions = entity
 		mode: directLake

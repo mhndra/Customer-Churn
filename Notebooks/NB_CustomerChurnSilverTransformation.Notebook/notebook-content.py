@@ -16,6 +16,10 @@
 # META           "id": "a2cf5112-d7cc-44e2-bd1f-0e270656104e"
 # META         }
 # META       ]
+# META     },
+# META     "environment": {
+# META       "environmentId": "d7a13147-0ca4-b54c-48da-38ee5e544dcb",
+# META       "workspaceId": "00000000-0000-0000-0000-000000000000"
 # META     }
 # META   }
 # META }
@@ -26,13 +30,53 @@
 
 # MARKDOWN ********************
 
-# ## 00 Import packages
+# ## 00 Import packages and create loading_enriched_table
 
 # CELL ********************
 
 from pyspark.sql.functions import *
 from pyspark.sql.types import *
 from delta.tables import *
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+def loading_enriched_table(df_source, target_table, candidate_key):
+    try:
+        deltaTable = DeltaTable.forName(spark, target_table)
+    except Exception:
+        try:
+            df_source.write.format("delta").mode("overwrite").option("delta.columnMapping.mode", "name").saveAsTable(f"{target_table}")
+        except Exception as e:
+            print(f":Load for table {target_table} failed with error: {str(e)}")
+            raise
+        return
+    
+    try:
+        match_condition = " AND ".join([f"target.`{col}` = source.`{col}`" for col in candidate_key])
+
+        change_detection_columns = [col for col in df_source.columns if col not in candidate_key]
+        update_condition = " OR ".join([f"target.`{col}` != source.`{col}`" for col in change_detection_columns])
+        update_expressions = {col: f"source.`{col}`" for col in df_source.columns}
+
+        merge_operation = deltaTable.alias("target").merge(
+            source=df_source.alias("source"),
+            condition=match_condition
+        ).whenMatchedUpdate(
+            condition=update_condition,
+            set=update_expressions
+        ).whenNotMatchedInsertAll()
+
+        merge_operation.execute()
+    except Exception as e:
+        print(f"Insert operation for table {target_table} failed with error: {str(e)}")
+    return
 
 # METADATA ********************
 
@@ -260,8 +304,11 @@ df_enriched.select("Customer ID").distinct().count()
 
 # CELL ********************
 
-target_table = "LH_CustomerChurnETL.silver.customer_churn_enriched"
-candidate_key = ["Customer ID"]
+loading_enriched_table(
+    df_source=df_enriched,
+    target_table="LH_CustomerChurnETL.silver.customer_churn_enriched",
+    candidate_key=["Customer ID"]
+)
 
 # METADATA ********************
 
@@ -272,58 +319,7 @@ candidate_key = ["Customer ID"]
 
 # CELL ********************
 
-def loading_enriched_table(df_source):
-    try:
-        deltaTable = DeltaTable.forName(spark, target_table)
-    except Exception:
-        try:
-            df_source.write.format("delta").mode("overwrite").option("delta.columnMapping.mode", "name").saveAsTable(f"{target_table}")
-        except Exception as e:
-            print(f":Load for table {target_table} failed with error: {str(e)}")
-            raise
-        return
-    
-    try:
-        match_condition = " AND ".join([f"target.`{col}` = source.`{col}`" for col in candidate_key])
-
-        change_detection_columns = [col for col in df_source.columns if col not in candidate_key]
-        update_condition = " OR ".join([f"target.`{col}` != source.`{col}`" for col in change_detection_columns])
-        update_expressions = {col: f"source.`{col}`" for col in df_source.columns}
-
-        merge_operation = deltaTable.alias("target").merge(
-            source=df_source.alias("source"),
-            condition=match_condition
-        ).whenMatchedUpdate(
-            condition=update_condition,
-            set=update_expressions
-        ).whenNotMatchedInsertAll()
-
-        merge_operation.execute()
-    except Exception as e:
-        print(f"Insert operation for table {target_table} failed with error: {str(e)}")
-    return
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-loading_enriched_table(df_source=df_enriched)
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-df_target = spark.read.table(target_table)
+df_target = spark.read.table("LH_CustomerChurnETL.silver.customer_churn_enriched")
 
 # METADATA ********************
 
@@ -343,9 +339,60 @@ df.count() == df_target.count()
 # META   "language_group": "synapse_pyspark"
 # META }
 
+# MARKDOWN ********************
+
+# ## 02 Data Transformation for LH_CustomerChurnETL.silver.state_enriched
+
+# MARKDOWN ********************
+
+# ### 02-1 Get the LH_CustomerChurnETL.bronze.state_abbreviations table
+
 # CELL ********************
 
-display(df_target.limit(1))
+df_state_abbreviations = spark.read.table("LH_CustomerChurnETL.bronze.state_abbreviations")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# ### 02-2 Join the enriched DataFrame with the state_abbreviations DataFrame
+
+# CELL ********************
+
+df_state_joined = df_enriched.alias("e").join(
+    df_state_abbreviations.alias("s"),
+    (df_enriched["State Code"] == df_state_abbreviations["State Code"]),
+    "left"
+).select(
+    col("e.`State Code`"),
+    col("s.`State Name`")
+).distinct()
+
+display(df_state_joined)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# ### 02-3 Load the state_joined DataFrame into the target table in silver layer
+
+# CELL ********************
+
+loading_enriched_table(
+    df_source=df_state_joined,
+    target_table="LH_CustomerChurnETL.silver.state_enriched",
+    candidate_key=["State Code"]
+)
 
 # METADATA ********************
 
@@ -356,17 +403,7 @@ display(df_target.limit(1))
 
 # CELL ********************
 
-display(df.limit(1))
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
+mssparkutils.session.stop()
 
 # METADATA ********************
 

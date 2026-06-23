@@ -30,7 +30,7 @@
 
 # MARKDOWN ********************
 
-# ## 00 Import packages and get the LH_CustomerChurnETL.silver.customer_churn_enriched table
+# ## 00 Import packages and get the tables in LH_CustomerChurnETL.silver schema
 
 # CELL ********************
 
@@ -44,13 +44,38 @@ import great_expectations.expectations as gxe
 # META   "language_group": "synapse_pyspark"
 # META }
 
+# MARKDOWN ********************
+
+# ### 00-1 customer_churn_enriched
+
 # CELL ********************
 
 df_customer_churn_enriched = spark.read.table("LH_CustomerChurnETL.silver.customer_churn_enriched")
 df_customer_churn_enriched_cols = df_customer_churn_enriched.columns 
 
+display("===== customer_churn_enriched =====")
 display(len(df_customer_churn_enriched_cols))
 display(df_customer_churn_enriched.printSchema())
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# ### 00-2 state_enriched
+
+# CELL ********************
+
+df_state_enriched = spark.read.table("LH_CustomerChurnETL.silver.state_enriched")
+df_state_enriched_cols = df_state_enriched.columns 
+
+display("===== state_enriched =====")
+display(len(df_state_enriched_cols))
+display(df_state_enriched.printSchema())
 
 # METADATA ********************
 
@@ -79,6 +104,19 @@ except:
         name="spark_source"
     )
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# ### 01-1 customer_churn_enriched
+
+# CELL ********************
+
 try:
     data_asset = data_source.get_asset(
         name="customer_churn_silver_asset"
@@ -106,7 +144,42 @@ except:
 
 # MARKDOWN ********************
 
+# ### 01-2 state_enriched
+
+# CELL ********************
+
+try:
+    state_enriched_asset = data_source.get_asset(
+        name="state_enriched_asset"
+    )
+except:
+    state_enriched_asset = data_source.add_dataframe_asset(
+        name="state_enriched_asset"
+    )
+
+try:
+    state_enriched_batch_def = state_enriched_asset.get_batch_definition(
+        name="state_enriched_batch_def"
+    )
+except:
+    state_enriched_batch_def = state_enriched_asset.add_batch_definition_whole_dataframe(
+        name="state_enriched_batch_def"
+    )
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
 # ## 02 Get or add Expectation Suite and add Expectations
+
+# MARKDOWN ********************
+
+# ### 02-1 customer_churn_enriched
 
 # CELL ********************
 
@@ -132,7 +205,7 @@ except:
 
 # MARKDOWN ********************
 
-# ### 02-1 Column values to not be null
+# #### > Column values to not be null
 
 # CELL ********************
 
@@ -152,7 +225,7 @@ for col in df_customer_churn_enriched_cols:
 
 # MARKDOWN ********************
 
-# ### 02-2 Column values to be unique
+# #### > Column values to be unique
 
 # CELL ********************
 
@@ -171,7 +244,7 @@ suite.add_expectation(
 
 # MARKDOWN ********************
 
-# ### 02-3 Column values to be in set
+# #### > Column values to be in set
 
 # MARKDOWN ********************
 
@@ -276,7 +349,7 @@ suite.add_expectation(
 
 # MARKDOWN ********************
 
-# ### 02-4 Column values to match regex
+# #### > Column values to match regex
 
 # CELL ********************
 
@@ -305,7 +378,7 @@ suite.add_expectation(
 
 # MARKDOWN ********************
 
-# ### 02-5 Column values to be between
+# #### > Column values to be between
 
 # CELL ********************
 
@@ -353,7 +426,99 @@ display(len(suite.expectations))
 
 # MARKDOWN ********************
 
+# ### 02-2 state_enriched
+
+# CELL ********************
+
+try:
+    state_enriched_suite = context.suites.get(
+        name="state_enriched_suite"
+    )
+    state_enriched_suite.expectations = []
+    state_enriched_suite.save()
+except:
+    state_enriched_suite = context.suites.add(
+        gx.ExpectationSuite(
+            name="state_enriched_suite"
+        )
+    )
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# #### > Column values to not be null
+
+# CELL ********************
+
+for col in df_state_enriched_cols:
+    state_enriched_suite.add_expectation(
+        gxe.ExpectColumnValuesToNotBeNull(
+            column=col
+        )
+    )
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# #### > Column values to be unique
+
+# CELL ********************
+
+state_enriched_suite.add_expectation(
+    gxe.ExpectColumnValuesToBeUnique(
+        column="`State Code`"
+    )
+)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+state_enriched_suite.save()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+display(state_enriched_suite)
+display(len(state_enriched_suite.expectations))
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
 # ## 03 Get or add Validation Definition
+
+# MARKDOWN ********************
+
+# ### 03-1 customer_churn_enriched
 
 # CELL ********************
 
@@ -379,7 +544,37 @@ except:
 
 # MARKDOWN ********************
 
+# ### 03-2 state_enriched
+
+# CELL ********************
+
+try:
+    state_enriched_validation = context.validation_definitions.get(
+        name="state_enriched_validation"
+    )
+except:
+    state_enriched_validation = context.validation_definitions.add(
+        gx.ValidationDefinition(
+            name="state_enriched_validation",
+            data=state_enriched_batch_def,
+            suite=state_enriched_suite
+        )
+    )
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
 # ## 04 Get or add Checkpoint
+
+# MARKDOWN ********************
+
+# ### 04-1 customer_churn_enriched
 
 # CELL ********************
 
@@ -405,7 +600,37 @@ except:
 
 # MARKDOWN ********************
 
+# ### 04-2 state_enriched
+
+# CELL ********************
+
+try:
+    state_enriched_checkpoint = context.checkpoints.get(
+        name="state_enriched_checkpoint"
+    )
+except:
+    state_enriched_checkpoint = context.checkpoints.add(
+        gx.Checkpoint(
+            name="state_enriched_checkpoint",
+            validation_definitions=[state_enriched_validation],
+            actions=[gx.checkpoint.UpdateDataDocsAction(name="update_data_docs")]
+        )
+    )
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
 # ## 05 Run the Checkpoint
+
+# MARKDOWN ********************
+
+# ### 05-1 customer_churn_enriched
 
 # CELL ********************
 
@@ -414,6 +639,8 @@ result = checkpoint.run(
         "dataframe": df_customer_churn_enriched
     }
 )
+
+print(f"customer_churn_silver_checkpoint successful: {result.success}")
 
 # METADATA ********************
 
@@ -424,7 +651,97 @@ result = checkpoint.run(
 
 # CELL ********************
 
-data_docs_path = "/lakehouse/default/Files/gx/gx/uncommitted/data_docs/local_site/validations/customer_churn_silver_suite/__none__/20260621T235220.689681Z/spark_source-customer_churn_silver_asset.html"
+customer_churn_silver_validation_result = list(result.run_results.values())[0]
+
+failed_summary = {}
+
+if not customer_churn_silver_validation_result["success"]:
+    failed_summary["suite"] = validation_definition.suite.name
+    failed_summary["details"] = []
+    for result in customer_churn_silver_validation_result["results"]:
+        if not result["success"]:
+            failed_summary["details"].append({
+                "column": result["expectation_config"]["kwargs"]["column"],
+                "expectation": result["expectation_config"]["type"],
+                "result": {
+                    "element_count": result["result"]["element_count"],
+                    "unexpected_count": result["result"]["unexpected_count"],
+                    "partial_unexpected_counts": result["result"]["partial_unexpected_counts"]
+                },
+                "severity": result["expectation_config"]["severity"]
+            })
+
+    raise Exception(f"Expectations failed:{failed_summary}")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# MARKDOWN ********************
+
+# ### 05-2 state_enriched
+
+# CELL ********************
+
+state_enriched_result = state_enriched_checkpoint.run(
+    batch_parameters={
+        "dataframe": df_state_enriched
+    }
+)
+
+print(f"state_enriched_checkpoint successful: {state_enriched_result.success}")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+state_enriched_validation_result = list(state_enriched_result.run_results.values())[0]
+
+failed_summary = {}
+
+if not state_enriched_validation_result["success"]:
+    failed_summary["suite"] = state_enriched_validation.suite.name
+    failed_summary["details"] = []
+    for result in state_enriched_validation_result["results"]:
+        if not result["success"]:
+            failed_summary["details"].append({
+                "column": result["expectation_config"]["kwargs"]["column"],
+                "expectation": result["expectation_config"]["type"],
+                "result": {
+                    "element_count": result["result"]["element_count"],
+                    "unexpected_count": result["result"]["unexpected_count"]
+                },
+                "severity": result["expectation_config"]["severity"]
+            })
+
+    raise Exception(f"Expectations failed:{failed_summary}")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+import os
+
+base_path = "/lakehouse/default/Files/gx/gx/uncommitted/data_docs/local_site/validations/state_enriched_suite/__none__"
+timestamps = sorted(os.listdir(base_path), reverse=True)
+latest_timestamp = timestamps[0]
+
+data_docs_path = f"{base_path}/{latest_timestamp}/spark_source-state_enriched_asset.html"
+
+display(f"Loading validation from: {latest_timestamp}")
 
 # Render inline
 with open(data_docs_path, "r") as f:
@@ -441,6 +758,7 @@ displayHTML(html_content)
 
 # CELL ********************
 
+mssparkutils.session.stop()
 
 # METADATA ********************
 

@@ -55,6 +55,7 @@ import great_expectations.expectations as gxe
 
 df_dim_churn_descriptions = spark.read.table("LH_CustomerChurnAnalytics.gold.dim_churn_descriptions")
 df_dim_churn_descriptions_cols = df_dim_churn_descriptions.columns
+
 display("===== dim_churn_descriptions =====")
 display(len(df_dim_churn_descriptions_cols))
 display(df_dim_churn_descriptions.printSchema())
@@ -74,6 +75,7 @@ display(df_dim_churn_descriptions.printSchema())
 
 df_dim_contracts = spark.read.table("LH_CustomerChurnAnalytics.gold.dim_contracts")
 df_dim_contracts_cols = df_dim_contracts.columns
+
 display("===== dim_contracts =====")
 display(len(df_dim_contracts_cols))
 display(df_dim_contracts.printSchema())
@@ -93,6 +95,7 @@ display(df_dim_contracts.printSchema())
 
 df_dim_customers = spark.read.table("LH_CustomerChurnAnalytics.gold.dim_customers")
 df_dim_customers_cols = df_dim_customers.columns
+
 display("===== dim_customers =====")
 display(len(df_dim_customers_cols))
 display(df_dim_customers.printSchema())
@@ -112,6 +115,7 @@ display(df_dim_customers.printSchema())
 
 df_dim_state = spark.read.table("LH_CustomerChurnAnalytics.gold.dim_state")
 df_dim_state_cols = df_dim_state.columns
+
 display("===== dim_state =====")
 display(len(df_dim_state_cols))
 display(df_dim_state.printSchema())
@@ -131,6 +135,7 @@ display(df_dim_state.printSchema())
 
 df_fact_customer_subscriptions = spark.read.table("LH_CustomerChurnAnalytics.gold.fact_customer_subscriptions")
 df_fact_customer_subscriptions_cols = df_fact_customer_subscriptions.columns
+
 display("===== fact_customer_subscriptions =====")
 display(len(df_fact_customer_subscriptions_cols))
 display(df_fact_customer_subscriptions.printSchema())
@@ -1021,6 +1026,27 @@ for checkpoint_name, validation, dataframe in validation_runs:
 
     print(f"{checkpoint_name} successful: {result.success}")
 
+    validation_result = list(result.run_results.values())[0]
+
+    failed_summary = {}
+
+    if not validation_result["success"]:
+        failed_summary["suite"] = validation.suite.name
+        failed_summary["details"] = []
+        for result in validation_result["results"]:
+            if not result["success"]:
+                failed_summary["details"].append({
+                    "column": result["expectation_config"]["kwargs"]["column"],
+                    "expectation": result["expectation_config"]["type"],
+                    "result": {
+                        "element_count": result["result"]["element_count"],
+                        "unexpected_count": result["result"]["unexpected_count"]
+                    },
+                    "severity": result["expectation_config"]["severity"]
+                })
+
+        raise Exception(f"Expectations failed:{failed_summary}")
+
 # METADATA ********************
 
 # META {
@@ -1030,7 +1056,7 @@ for checkpoint_name, validation, dataframe in validation_runs:
 
 # CELL ********************
 
-data_docs_path = "/lakehouse/default/Files/gx/gx/uncommitted/data_docs/local_site/validations/dim_customers_suite/__none__/20260621T234506.700684Z/spark_source-dim_customers_asset.html"
+data_docs_path = "/lakehouse/default/Files/gx/gx/uncommitted/data_docs/local_site/validations/dim_state_suite/__none__/20260623T013016.762142Z/spark_source-dim_state_asset.html"
 
 # Render inline
 with open(data_docs_path, "r") as f:
@@ -1047,6 +1073,7 @@ displayHTML(html_content)
 
 # CELL ********************
 
+mssparkutils.session.stop()
 
 # METADATA ********************
 

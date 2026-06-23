@@ -2,16 +2,6 @@ table dim_churn_descriptions
 	lineageTag: 094638ed-f673-4dfd-b86a-ec4c5ed02a56
 	sourceLineageTag: [gold].[dim_churn_descriptions]
 
-	column 'Churn Key'
-		dataType: int64
-		formatString: 0
-		lineageTag: 9ab1e234-39e2-45f6-af44-0fddb4f4e9db
-		sourceLineageTag: Churn Key
-		summarizeBy: none
-		sourceColumn: Churn Key
-
-		annotation SummarizationSetBy = Automatic
-
 	column 'Churn Reason'
 		dataType: string
 		lineageTag: 4e6c2021-67fd-49e0-83c0-88ec23be10f3
@@ -27,6 +17,15 @@ table dim_churn_descriptions
 		sourceLineageTag: Churn Category
 		summarizeBy: none
 		sourceColumn: Churn Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Churn Description Key'
+		dataType: string
+		lineageTag: a1bf8098-f838-44dc-a204-388de6447357
+		sourceLineageTag: Churn Description Key
+		summarizeBy: none
+		sourceColumn: Churn Description Key
 
 		annotation SummarizationSetBy = Automatic
 

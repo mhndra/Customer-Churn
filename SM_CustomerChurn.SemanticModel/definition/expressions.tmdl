@@ -7,3 +7,5 @@ expression 'DirectLake - LH_CustomerChurn' =
 
 	annotation PBI_IncludeFutureArtifacts = False
 
+	annotation PBI_RemovedChildren = [{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[gold_dataflow].[dim_state]"}},"objectType":"Table"},{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[gold_dataflow].[dim_contracts]"}},"objectType":"Table"},{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[gold_dataflow].[dim_customers]"}},"objectType":"Table"},{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[gold_dataflow].[dim_churn_descriptions]"}},"objectType":"Table"},{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[gold_dataflow].[fact_customer_subscriptions]"}},"objectType":"Table"}]
+

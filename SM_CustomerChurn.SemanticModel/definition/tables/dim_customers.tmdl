@@ -3,8 +3,7 @@ table dim_customers
 	sourceLineageTag: [gold].[dim_customers]
 
 	column 'Customer Key'
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: 24bc16b9-0c92-4450-8a17-6a394c5889de
 		sourceLineageTag: Customer Key
 		summarizeBy: none
@@ -114,15 +113,6 @@ table dim_customers
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Is Device Protection And Online Backup'
-		dataType: string
-		lineageTag: b9b1abb2-e267-4a46-bfbd-fa16b242f675
-		sourceLineageTag: Is Device Protection And Online Backup
-		summarizeBy: none
-		sourceColumn: Is Device Protection And Online Backup
-
-		annotation SummarizationSetBy = Automatic
-
 	column 'Is Churn'
 		dataType: string
 		lineageTag: ed8f01d9-2c73-46a4-bacf-0065f14caa28
@@ -139,6 +129,15 @@ table dim_customers
 		sourceLineageTag: Churn Flag
 		summarizeBy: none
 		sourceColumn: Churn Flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Device Protection and Online Backup'
+		dataType: string
+		lineageTag: 25a23cc9-4ee3-4ae2-abf1-4b0e3e4a6b18
+		sourceLineageTag: Is Device Protection and Online Backup
+		summarizeBy: none
+		sourceColumn: Is Device Protection and Online Backup
 
 		annotation SummarizationSetBy = Automatic
 

@@ -1,8 +1,3 @@
-relationship 0fff5f8a-00a7-bbc2-8a14-d0aa83fde720
-	relyOnReferentialIntegrity
-	fromColumn: fact_customer_subscriptions.'Churn Key'
-	toColumn: dim_churn_descriptions.'Churn Key'
-
 relationship 2e55a9b1-e57e-86b5-8ff5-281e584ee84f
 	relyOnReferentialIntegrity
 	fromColumn: fact_customer_subscriptions.'State Key'
@@ -17,4 +12,9 @@ relationship 159641a1-2e5e-ebe3-963d-36d65e6acdb2
 	relyOnReferentialIntegrity
 	fromColumn: fact_customer_subscriptions.'Customer Key'
 	toColumn: dim_customers.'Customer Key'
+
+relationship c99ba05a-8201-ed13-449c-fd15e835c7fd
+	relyOnReferentialIntegrity
+	fromColumn: fact_customer_subscriptions.'Churn Description Key'
+	toColumn: dim_churn_descriptions.'Churn Description Key'
 

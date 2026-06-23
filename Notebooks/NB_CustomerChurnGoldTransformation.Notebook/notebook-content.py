@@ -19,6 +19,10 @@
 # META           "id": "a518a941-f003-43c3-a936-9782b007ae81"
 # META         }
 # META       ]
+# META     },
+# META     "environment": {
+# META       "environmentId": "d7a13147-0ca4-b54c-48da-38ee5e544dcb",
+# META       "workspaceId": "00000000-0000-0000-0000-000000000000"
 # META     }
 # META   }
 # META }
@@ -107,13 +111,29 @@ display(df.limit(20))
 
 # MARKDOWN ********************
 
-# ### 02-1 Deduplicate data and generate surrogate key
+# ### 02-1 Deduplicate data, generate surrogate key, and join the customer_churn_enriched DataFrame with the state_enriched table
 
 # CELL ********************
 
-df_state_keyed = df.select(
-    md5(concat_ws("||", col("State Code"))).alias("State Key"),
-    "State Code"
+df_state_enriched = spark.read.table("LH_CustomerChurnETL.silver.state_enriched")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+df_state_keyed = df.alias("c").join(
+    df_state_enriched.alias("s"),
+    (df["State Code"] == df_state_enriched["State Code"]),
+    "left"
+).select(
+    md5(concat_ws("||", col("c.`State Code`"))).alias("State Key"),
+    col("c.`State Code`"),
+    col("s.`State Name`")
 ).distinct()
 
 display(df_state_keyed.count())
@@ -218,7 +238,7 @@ df_contracts_keyed.printSchema()
 
 # MARKDOWN ********************
 
-# ### 03-2 Load the contracts DataFrame into the target contracts table in gold layer
+# ### 03-2 Load the contracts_keyed DataFrame into the target table in gold layer
 
 # CELL ********************
 
@@ -285,7 +305,7 @@ df_churn_descriptions_keyed.printSchema()
 
 # MARKDOWN ********************
 
-# ### 04-2 Load the churn descriptions DataFrame into the target churn descriptions table in gold layer
+# ### 04-2 Load the churn_descriptions_keyed DataFrame into the target table in gold layer
 
 # CELL ********************
 
@@ -364,7 +384,7 @@ df_customers_keyed.printSchema()
 
 # MARKDOWN ********************
 
-# ### 05-2 Load the customers DataFrame into the target customers table in gold layer
+# ### 05-2 Load the customers_keyed DataFrame into the target table in gold layer
 
 # CELL ********************
 
@@ -435,7 +455,7 @@ display(df_customer_subscriptions_keyed.limit(10))
 
 # MARKDOWN ********************
 
-# ### 06-2 Join the customer subscriptions DataFrame with dimension tables
+# ### 06-2 Join the customer_subscriptions_keyed DataFrame with dimension tables
 
 # CELL ********************
 
@@ -528,7 +548,7 @@ df_customer_subscriptions_joined.printSchema()
 
 # MARKDOWN ********************
 
-# ### 06-3 Load the customer subscriptions DataFrame into the target customer subscriptions table in gold layer
+# ### 06-3 Load the customer_subscriptions_joined DataFrame into the target table in gold layer
 
 # CELL ********************
 
@@ -547,6 +567,7 @@ loading_to_table(
 
 # CELL ********************
 
+mssparkutils.session.stop()
 
 # METADATA ********************
 

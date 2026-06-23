@@ -23,8 +23,8 @@
       {
         "type": "RefreshDataflow",
         "typeProperties": {
-          "dataflowId": "03c76a9d-0512-8592-4005-55ac79c886ac",
-          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "dataflowId": "f89bf8cd-8e55-4f19-be40-f9afdf12079d",
+          "workspaceId": "a298258a-25c5-47b7-b809-d2c4b6246ebf",
           "notifyOption": "NoNotification",
           "dataflowType": "DataflowFabric",
           "executeMashupQueriesOnly": true
@@ -37,6 +37,8 @@
           "secureOutput": false
         },
         "name": "Dataflow - Silver",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
         "dependsOn": [
           {
             "activity": "Copy job",
@@ -49,8 +51,8 @@
       {
         "type": "RefreshDataflow",
         "typeProperties": {
-          "dataflowId": "d6719717-5d24-9679-4c09-e5ac80894614",
-          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "dataflowId": "03f18afa-87d1-4af6-a9f8-9d172e778e40",
+          "workspaceId": "a298258a-25c5-47b7-b809-d2c4b6246ebf",
           "notifyOption": "NoNotification",
           "dataflowType": "DataflowFabric",
           "executeMashupQueriesOnly": true
@@ -63,6 +65,8 @@
           "secureOutput": false
         },
         "name": "Dataflow - Gold",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
         "dependsOn": [
           {
             "activity": "Dataflow - Silver",
@@ -85,10 +89,166 @@
           "secureInput": false,
           "secureOutput": false
         },
-        "name": "Notebook - Silver",
+        "name": "Notebook - Silver Transformation",
         "dependsOn": [
           {
             "activity": "Copy job",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "Wait - Stop Notebook Session",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "8f2b0270-1728-9cf9-4a3b-107551990360",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Notebook - Silver Expectations",
+        "dependsOn": [
+          {
+            "activity": "Notebook - Silver Transformation",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "04b95032-f800-bf5f-4642-1db528e595ae",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Notebook - Gold Transformation",
+        "dependsOn": [
+          {
+            "activity": "Notebook - Silver Expectations",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "f74f27a4-27f9-aa65-4842-a09b0da304bb",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Notebook - Gold Expectations",
+        "dependsOn": [
+          {
+            "activity": "Notebook - Gold Transformation",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "416abc99-ea33-b75c-418c-1b101f425825",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Notebook - Extract Two-letter State Abbreviations",
+        "dependsOn": []
+      },
+      {
+        "type": "PBISemanticModelRefresh",
+        "typeProperties": {
+          "method": "POST",
+          "groupId": "a298258a-25c5-47b7-b809-d2c4b6246ebf",
+          "datasetId": "612c24d8-afab-42f3-ad7d-65c1ea80d053",
+          "commitMode": "Transactional",
+          "objects": [
+            {
+              "table": "_Measures"
+            },
+            {
+              "table": "dim_state"
+            },
+            {
+              "table": "dim_churn_descriptions"
+            },
+            {
+              "table": "dim_contracts"
+            },
+            {
+              "table": "fact_customer_subscriptions"
+            },
+            {
+              "table": "dim_customers"
+            }
+          ],
+          "waitOnCompletion": true,
+          "operationType": "SemanticModelRefresh"
+        },
+        "externalReferences": {
+          "connection": "1687eebc-cd2f-4cc2-9766-56c621680ff2"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Semantic model refresh",
+        "dependsOn": [
+          {
+            "activity": "Notebook - Gold Expectations",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Wait",
+        "typeProperties": {
+          "waitTimeInSeconds": 30
+        },
+        "name": "Wait - Stop Notebook Session",
+        "dependsOn": [
+          {
+            "activity": "Notebook - Extract Two-letter State Abbreviations",
             "dependencyConditions": [
               "Succeeded"
             ]
