@@ -92,12 +92,6 @@
         "name": "Notebook - Silver Transformation",
         "dependsOn": [
           {
-            "activity": "Copy job",
-            "dependencyConditions": [
-              "Succeeded"
-            ]
-          },
-          {
             "activity": "Wait - Stop Notebook Session",
             "dependencyConditions": [
               "Succeeded"
@@ -249,6 +243,12 @@
         "dependsOn": [
           {
             "activity": "Notebook - Extract Two-letter State Abbreviations",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          },
+          {
+            "activity": "Copy job",
             "dependencyConditions": [
               "Succeeded"
             ]
