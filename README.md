@@ -11,6 +11,12 @@ Tim analis diminta sebuah perusahaan telekomunikasi untuk meninjau data survey k
     - Data terstruktur → Dataset tersimpan dalam sebuah file berekstensi .csv.
     - Pengelompokkan tipe data → Dikelompokkan ke dalam dua tipe data, yaitu categorical data dan continuous data untuk digunakan sebagai konteks maupun pengukuran pada saat analisis.
 
+- Dataset Kedua:
+    - Nama → Two-letter State Abbreviations
+    - Sumber data → Data berasal dari halaman website Federal Aviation Administration (FAA) yang menampilkan tabel kode dan nama state di Amerika Serikat.
+    - Data tidak terstruktur → Dataset dalam bentuk teks html.
+    - Pengelompokkan tipe data → Dikelompokkan hanya satu tipe data, yaitu categorical data untuk digunakan sebagai pengayaan konteks pada saat analisis.
+
 ### 02-2 Data Problem
 Adapun masalah yang ditemukan pada data, yaitu:
 
@@ -25,97 +31,99 @@ Berdasarkan dataset yang akan digunakan dan masalah-masalah yang ditemukan, maka
 
 ![alt text](images/data_pipeline.png)
 
-Berdasarkan data pipeline yang ditampilkan, pada proyek kali ini, proses ekstraksi hingga visualisasi data menggunakan Microsoft Fabric Free Trial dengan proses Extract, Load, dan Transform (ELT) menggunakan Medallion Architecture. Mulai dari Bronze Layer, proses ekstrasi lalu memuat sebuah file berekstensi .csv yang telah diunggah di sebuah lakehouse agar menjadi sebuah tabel. Berikut ini tabel informasi mengenai tabel hasil ekstrasi data.
+Berdasarkan data pipeline yang ditampilkan, pada proyek kali ini, proses ekstraksi hingga visualisasi data menggunakan Microsoft Fabric Free Trial dengan proses Extract, Load, dan Transform (ELT) menggunakan Medallion Architecture. Mulai dari Bronze Layer, proses ekstrasi lalu memuat file berekstensi .csv maupun teks html menjadi dua tabel yang terpisah berdasarkan sumber datanya. Berikut ini tabel informasi mengenai tabel hasil ekstrasi data.
 
-| Nama data (tabel)     | Pemilik       | Sumber data       | Asal format data  | Ukuran    | Catatan                                                   |
-|-----------------------|---------------|-------------------|-------------------|-----------|-----------------------------------------------------------|
-| Bronze_Customer Churn | Perusahaan    | Local directory   | CSV file format   | ± 848KB   | Gabungan data langganan konsumen                          |
+| Nama data (tabel)                 | Pemilik                               | Sumber data       | Asal format data  | Ukuran    | Catatan                                       |
+|-----------------------------------|---------------------------------------|-------------------|-------------------|-----------|-----------------------------------------------|
+| [bronze].[customer_churn]         | Perusahaan                            | Local directory   | CSV file format   | ± 848KB   | Gabungan data langganan konsumen              |
+| [bronze].[state_abbreviations]    | Federal Aviation Administration (FAA) | Website           | HTML text         | -         | Text html yang diekstrak melalui API request  |
 
-Kemudian, Silver Layer, proses transformasi struktur tabel, seperti mengubah tipe data, mengubah nama kolom, dan mengubah urutan kolom hingga proses transformasi dengan penambahan kolom untuk penyelarasan logika bisnis. Kemudian, Gold Layer, proses transformasi data menjadi dimensional modeling - star schema yang terdiri dari tabel-tabel dimensi dan fakta yang siap digunakan untuk analsis. Tabel-tabel ini tersimpan dalam sebuah skema [WH_CustomerChurn].[gold].
+Kemudian, Silver Layer, proses transformasi struktur tabel, seperti mengubah tipe data, mengubah nama kolom, mengubah urutan kolom, dan penambahan kolom, serta menggabungkan dua sumber data untuk penyelarasan logika bisnis. Kemudian, Gold Layer, proses transformasi data menjadi dimensional modeling - star schema yang terdiri dari tabel-tabel dimensi dan fakta yang siap digunakan untuk analsis. Tabel-tabel ini tersimpan dalam sebuah skema [LH_CustomerChurnAnalytics].[gold].
 
 ### 02-4 Penyimpanan Data Siap Analisis
 Berikut ini informasi struktur tabel dari tabel-tabel dimensi dan fakta yang akan digunakan untuk analisis.
 
-- Tabel Dim_State
+- Tabel dim_state
     - Kolom dan tipe data
 
-    | Nama kolom    | Tipe data     | Pengelompokkan tipe data              |
-    |---------------|---------------|---------------------------------------|
-    | State Key     | BIGINT        | Surrogate key                         |
-    | State Code    | VARCHAR(8000) | Categorical data/Dimension attribute  |
+    | Nama kolom    | Tipe data | Pengelompokkan tipe data              |
+    |---------------|-----------|---------------------------------------|
+    | State Key     | String    | Surrogate key                         |
+    | State Code    | String    | Categorical data/Dimension attribute  |
+    | State Name    | String    | Categorical data/Dimension attribute  |
 
-- Tabel Dim_Contracts
+- Tabel dim_contracts
     - Kolom dan tipe data
 
-    | Nama kolom        | Tipe data     | Pengelompokkan tipe data              |
-    |-------------------|---------------|---------------------------------------|
-    | Contract Key      | BIGINT        | Surrogate key                         |
-    | Contract Type     | VARCHAR(8000) | Categorical data/Dimension attribute  |
-    | Contract Category | VARCHAR(8000) | Categorical data/Dimension attribute  |
-    | Payment Method    | VARCHAR(8000) | Categorical data/Dimension attribute  |
+    | Nama kolom        | Tipe data | Pengelompokkan tipe data              |
+    |-------------------|-----------|---------------------------------------|
+    | Contract Key      | String    | Surrogate key                         |
+    | Contract Type     | String    | Categorical data/Dimension attribute  |
+    | Contract Category | String    | Categorical data/Dimension attribute  |
+    | Payment Method    | String    | Categorical data/Dimension attribute  |
 
-- Tabel Dim_Churn
+- Tabel dim_churn_descriptions
     - Kolom dan tipe data
 
-    | Nama kolom        | Tipe data     | Pengelompokkan tipe data              |
-    |-------------------|---------------|---------------------------------------|
-    | Churn Key         | BIGINT        | Surrogate key                         |
-    | Churn Reason      | VARCHAR(8000) | Categorical data/Dimension attribute  |
-    | Churn Category    | VARCHAR(8000) | Categorical data/Dimension attribute  |
+    | Nama kolom        | Tipe Data | Pengelompokkan tipe data              |
+    |-------------------|-----------|---------------------------------------|
+    | Churn Key         | String    | Surrogate key                         |
+    | Churn Reason      | String    | Categorical data/Dimension attribute  |
+    | Churn Category    | String    | Categorical data/Dimension attribute  |
 
-- Tabel Dim_Customers
+- Tabel dim_customers
     - Kolom dan tipe data
 
-    | Nama kolom                                | Tipe data     | Pengelompokkan tipe data              |
-    |-------------------------------------------|---------------|---------------------------------------|
-    | Customer Key                              | BIGINT        | Surrogate key                         |
-    | Customer ID                               | VARCHAR(8000) | Natural key                           |
-    | Phone Number                              | VARCHAR(8000) | Categorical data/Dimension attribute  |
-    | Gender                                    | VARCHAR(8000) | Categorical data/Dimension attribute  |
-    | Demographics                              | VARCHAR(8000) | Categorical data/Dimension attribute  |
-    | Age                                       | BIGINT        | Continuous data/Dimension attribute   |
-    | Age Bin                                   | BIGINT        | Continuous data/Dimension attribute   |
-    | Is Contract Group                         | VARCHAR(8000) | Categorical data/Dimension attribute  |
-    | Number of Customers in Group              | BIGINT        | Continuous data/Dimension attribute   |
-    | Is International Calls Active             | VARCHAR(8000) | Categorical data/Dimension attribute  |
-    | Is International Plan                     | VARCHAR(8000) | Categorical data/Dimension attribute  |
-    | Is Unlimited Data Plan                    | VARCHAR(8000) | Categorical data/Dimension attribute  |
-    | Is Device Protection And Online Backup    | VARCHAR(8000) | Categorical data/Dimension attribute  |
-    | Is Churn                                  | VARCHAR(8000) | Categorical data/Dimension attribute  |
-    | Churn Flag                                | BIGINT        | Continuous data/Dimension attribute   |
+    | Nama kolom                                | Tipe data | Pengelompokkan tipe data              |
+    |-------------------------------------------|-----------|---------------------------------------|
+    | Customer Key                              | String    | Surrogate key                         |
+    | Customer ID                               | String    | Natural key                           |
+    | Phone Number                              | String    | Categorical data/Dimension attribute  |
+    | Gender                                    | String    | Categorical data/Dimension attribute  |
+    | Demographics                              | String    | Categorical data/Dimension attribute  |
+    | Age                                       | Integer   | Continuous data/Dimension attribute   |
+    | Age Bin                                   | Integer   | Continuous data/Dimension attribute   |
+    | Is Contract Group                         | String    | Categorical data/Dimension attribute  |
+    | Number of Customers in Group              | Long      | Continuous data/Dimension attribute   |
+    | Is International Calls Active             | String    | Categorical data/Dimension attribute  |
+    | Is International Plan                     | String    | Categorical data/Dimension attribute  |
+    | Is Unlimited Data Plan                    | String    | Categorical data/Dimension attribute  |
+    | Is Device Protection And Online Backup    | String    | Categorical data/Dimension attribute  |
+    | Is Churn                                  | String    | Categorical data/Dimension attribute  |
+    | Churn Flag                                | Integer   | Continuous data/Dimension attribute   |
 
-- Tabel Fact_Customer Subscriptions
+- Tabel fact_customer_subscriptions
     - Kolom dan tipe data
 
-    | Nama kolom                    | Tipe data     | Pengelompokkan tipe data              |
-    |-------------------------------|---------------|---------------------------------------|
-    | Subscription Key              | BIGINT        | Surrogate key                         |
-    | Customer Key                  | BIGINT        | Foreign key                           |
-    | State Key                     | BIGINT        | Foreign key                           |
-    | Contract Key                  | BIGINT        | Foreign key                           |
-    | Churn Key                     | BIGINT        | Foreign key                           |
-    | Grouped Consumption           | VARCHAR(8000) | Categorical data/Degenerate dimension |
-    | Avg Monthly GB Download       | BIGINT        | Continuous data/Measure               |
-    | Local Calls                   | BIGINT        | Continuous data/Measure               |
-    | Local Mins                    | FLOAT         | Continuous data/Measure               |
-    | International Calls           | BIGINT        | Continuous data/Measure               |
-    | International Mins            | BIGINT        | Continuous data/Measure               |
-    | Customer Service Calls        | BIGINT        | Continuous data/Measure               |
-    | Account Length Months         | BIGINT        | Continuous data/Measure               |
-    | Monthly Charge                | FLOAT         | Continuous data/Measure               |
-    | Extra International Charges   | FLOAT         | Continuous data/Measure               |
-    | Extra Data Charges            | FLOAT         | Continuous data/Measure               |
-    | Total Charge                  | FLOAT         | Continuous data/Measure               |
-    | Loaded At                     | DATETIME2     | Date and timestamp data               |
+    | Nama kolom                    | Tipe data | Pengelompokkan tipe data              |
+    |-------------------------------|-----------|---------------------------------------|
+    | Subscription Key              | String    | Surrogate key                         |
+    | Customer Key                  | String    | Foreign key                           |
+    | State Key                     | String    | Foreign key                           |
+    | Contract Key                  | String    | Foreign key                           |
+    | Churn Key                     | String    | Foreign key                           |
+    | Grouped Consumption           | String    | Categorical data/Dimension |
+    | Avg Monthly GB Download       | Long      | Continuous data/Measure               |
+    | Local Calls                   | Long      | Continuous data/Measure               |
+    | Local Mins                    | Double    | Continuous data/Measure               |
+    | International Calls           | Long      | Continuous data/Measure               |
+    | International Mins            | Double    | Continuous data/Measure               |
+    | Customer Service Calls        | Long      | Continuous data/Measure               |
+    | Account Length Months         | Long      | Continuous data/Measure               |
+    | Monthly Charge                | Double    | Continuous data/Measure               |
+    | Extra International Charges   | Double    | Continuous data/Measure               |
+    | Extra Data Charges            | Double    | Continuous data/Measure               |
+    | Total Charge                  | Double    | Continuous data/Measure               |
+    | Loaded At                     | Timestamp | Date and timestamp data               |
 
     - Kolom referensi
 
-    | Nama kolom referensi  | Tujuan kolom  | Tujuan tabel  |
-    |-----------------------|---------------|---------------|
-    | Customer Key          | Customer Key  | Dim_Customers |
-    | State Key             | State Key     | Dim_State     |
-    | Contract Key          | Contract Key  | Dim_Contracts |
-    | Churn Key             | Churn Key     | Dim_Churn     |
+    | Nama kolom referensi  | Tujuan kolom  | Tujuan tabel              |
+    |-----------------------|---------------|---------------------------|
+    | Customer Key          | Customer Key  | dim_customers             |
+    | State Key             | State Key     | dim_state                 |
+    | Contract Key          | Contract Key  | dim_contracts             |
+    | Churn Key             | Churn Key     | dim_churn_descriptions    |
 
 
 ## 03 Visualizing Data
