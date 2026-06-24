@@ -29,6 +29,21 @@
               "queryRef": "dim_state.State Code",
               "nativeQueryRef": "State Code1",
               "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_state"
+                    }
+                  },
+                  "Property": "State Name"
+                }
+              },
+              "queryRef": "dim_state.State Name",
+              "nativeQueryRef": "First State Name",
+              "active": true
             }
           ]
         },
@@ -47,29 +62,6 @@
               },
               "queryRef": "dim_customers.Is Churn",
               "nativeQueryRef": "Is Churn"
-            }
-          ]
-        },
-        "Tooltips": {
-          "projections": [
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "dim_state"
-                        }
-                      },
-                      "Property": "State Name"
-                    }
-                  },
-                  "Function": 3
-                }
-              },
-              "queryRef": "Min(dim_state.State Name)",
-              "nativeQueryRef": "First State Name"
             }
           ]
         },
@@ -164,7 +156,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }
@@ -191,6 +183,33 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "categoryAxis": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "concatenateLabels": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

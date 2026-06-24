@@ -411,7 +411,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Average of Customer Service Calls and Churn Rate by State Code'"
+                  "Value": "'Average of Customer Service Calls and Churn Rate by State Name'"
                 }
               }
             }

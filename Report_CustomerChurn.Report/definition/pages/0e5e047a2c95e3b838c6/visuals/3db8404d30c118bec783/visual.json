@@ -23,11 +23,11 @@
                       "Entity": "dim_customers"
                     }
                   },
-                  "Property": "Is International Calls Active"
+                  "Property": "Is International Plan"
                 }
               },
-              "queryRef": "dim_customers.Is International Calls Active",
-              "nativeQueryRef": "Is International Calls Active",
+              "queryRef": "dim_customers.Is International Plan",
+              "nativeQueryRef": "Is International Plan",
               "active": true
             }
           ]
@@ -63,7 +63,49 @@
       ],
       "general": [
         {
-          "properties": {}
+          "properties": {
+            "filter": {
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "d",
+                    "Entity": "dim_customers",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "In": {
+                        "Expressions": [
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "d"
+                                }
+                              },
+                              "Property": "Is International Plan"
+                            }
+                          }
+                        ],
+                        "Values": [
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'No'"
+                              }
+                            }
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
         }
       ]
     },
