@@ -2,25 +2,6 @@
   "properties": {
     "activities": [
       {
-        "type": "InvokeCopyJob",
-        "typeProperties": {
-          "copyJobId": "be5bb320-090f-9ed0-4100-9368c9d5cca2",
-          "workspaceId": "00000000-0000-0000-0000-000000000000"
-        },
-        "externalReferences": {
-          "connection": "45c57dbd-338d-42cf-88fa-593b93380c99"
-        },
-        "policy": {
-          "timeout": "0.12:00:00",
-          "retry": 0,
-          "retryIntervalInSeconds": 30,
-          "secureInput": false,
-          "secureOutput": false
-        },
-        "name": "Copy job",
-        "dependsOn": []
-      },
-      {
         "type": "RefreshDataflow",
         "typeProperties": {
           "dataflowId": "f89bf8cd-8e55-4f19-be40-f9afdf12079d",
@@ -41,7 +22,7 @@
         "onInactiveMarkAs": "Succeeded",
         "dependsOn": [
           {
-            "activity": "Copy job",
+            "activity": "If Lookup Condition",
             "dependencyConditions": [
               "Succeeded"
             ]
@@ -92,7 +73,7 @@
         "name": "Notebook - Silver Transformation",
         "dependsOn": [
           {
-            "activity": "Wait - Stop Notebook Session",
+            "activity": "If Lookup Condition",
             "dependencyConditions": [
               "Succeeded"
             ]
@@ -169,22 +150,6 @@
         ]
       },
       {
-        "type": "TridentNotebook",
-        "typeProperties": {
-          "notebookId": "416abc99-ea33-b75c-418c-1b101f425825",
-          "workspaceId": "00000000-0000-0000-0000-000000000000"
-        },
-        "policy": {
-          "timeout": "0.12:00:00",
-          "retry": 0,
-          "retryIntervalInSeconds": 30,
-          "secureInput": false,
-          "secureOutput": false
-        },
-        "name": "Notebook - Extract Two-letter State Abbreviations",
-        "dependsOn": []
-      },
-      {
         "type": "PBISemanticModelRefresh",
         "typeProperties": {
           "method": "POST",
@@ -235,22 +200,125 @@
         ]
       },
       {
-        "type": "Wait",
+        "type": "Lookup",
         "typeProperties": {
-          "waitTimeInSeconds": 30
+          "source": {
+            "type": "LakehouseTableSource"
+          },
+          "datasetSettings": {
+            "type": "LakehouseTable",
+            "typeProperties": {
+              "schema": "bronze",
+              "table": "state_abbreviations"
+            },
+            "schema": [],
+            "connectionSettings": {
+              "name": "LH_CustomerChurnETL",
+              "properties": {
+                "type": "Lakehouse",
+                "typeProperties": {
+                  "artifactId": "45ba854c-2d16-842c-4575-e81528e8d742",
+                  "workspaceId": "00000000-0000-0000-0000-000000000000",
+                  "rootFolder": "Tables"
+                },
+                "externalReferences": {
+                  "connection": "119926fe-cc4d-42e4-ae3b-0fcfb4ff7c62"
+                },
+                "annotations": []
+              }
+            },
+            "annotations": []
+          }
         },
-        "name": "Wait - Stop Notebook Session",
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Lookup Table",
+        "dependsOn": []
+      },
+      {
+        "type": "IfCondition",
+        "typeProperties": {
+          "expression": {
+            "value": "@equals(activity('Lookup Table').status, 'Succeeded')",
+            "type": "Expression"
+          },
+          "ifTrueActivities": [
+            {
+              "type": "InvokeCopyJob",
+              "typeProperties": {
+                "copyJobId": "be5bb320-090f-9ed0-4100-9368c9d5cca2",
+                "workspaceId": "00000000-0000-0000-0000-000000000000"
+              },
+              "externalReferences": {
+                "connection": "45c57dbd-338d-42cf-88fa-593b93380c99"
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Copy Job 1",
+              "dependsOn": []
+            }
+          ],
+          "ifFalseActivities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "416abc99-ea33-b75c-418c-1b101f425825",
+                "workspaceId": "00000000-0000-0000-0000-000000000000"
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Notebook - Extract Two-letter State Abbreviations_copy1",
+              "dependsOn": []
+            },
+            {
+              "type": "InvokeCopyJob",
+              "typeProperties": {
+                "copyJobId": "be5bb320-090f-9ed0-4100-9368c9d5cca2",
+                "workspaceId": "00000000-0000-0000-0000-000000000000"
+              },
+              "externalReferences": {
+                "connection": "45c57dbd-338d-42cf-88fa-593b93380c99"
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Copy Job 2",
+              "dependsOn": [
+                {
+                  "activity": "Notebook - Extract Two-letter State Abbreviations_copy1",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "name": "If Lookup Condition",
         "dependsOn": [
           {
-            "activity": "Notebook - Extract Two-letter State Abbreviations",
+            "activity": "Lookup Table",
             "dependencyConditions": [
-              "Succeeded"
-            ]
-          },
-          {
-            "activity": "Copy job",
-            "dependencyConditions": [
-              "Succeeded"
+              "Completed"
             ]
           }
         ]
